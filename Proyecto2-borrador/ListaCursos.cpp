@@ -1,18 +1,15 @@
 #include "ListaCursos.h"
 
-ListaCurso::ListaCurso() :ppio(nullptr), actual(nullptr)
-{
+ListaCurso::ListaCurso() :ppio(nullptr), actual(nullptr){
 }
 
-ListaCurso::~ListaCurso()
-{
+ListaCurso::~ListaCurso(){
 	actual = ppio;
 	while (actual != nullptr)
 		delete actual;
 }
 
-string ListaCurso::mostrarCursos()
-{
+string ListaCurso::mostrarCursos(){
 	stringstream c;
 	actual = ppio;
 	while (actual != nullptr)
@@ -20,8 +17,7 @@ string ListaCurso::mostrarCursos()
 	return c.str();
 }
 
-Curso* ListaCurso::obtenerCurso(string idC)
-{
+Curso* ListaCurso::obtenerCurso(string idC){
 	actual = ppio;
 	while (actual != nullptr) {
 		if (actual->getCurso()->getIdCurso() == idC) {
