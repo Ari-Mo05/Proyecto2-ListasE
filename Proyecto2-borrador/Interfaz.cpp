@@ -168,3 +168,67 @@ bool Interfaz::asignarProfesor(ListaProfesores* listaP, ListaGrupo* listaG){
 }
 
 //--------------------MENU-MATRICULA----------------------------------
+int Interfaz::subMenuMatricula() {
+	int op;
+	system("cls");
+	cout << "---------SUBMENU-MATRICULA-------" << endl;
+	cout << "1- Matricular Estudiante" << endl;
+	cout << "2- Desmatricular Estudiante" << endl;
+	cout << "3- Regresar al menu Principal" << endl;
+	cin >> op;
+	return op;
+}
+
+//terminar
+bool Interfaz::matricularEstudiante(ListaEst* listaE, ListaGrupo* listaG) {
+	string ced, curso;
+	int num;
+	cout << "Digite la cedula del estudiante" << endl;
+	cin >> ced;
+	if (listaE->siExisteEstudiante(ced)) {
+		cout << "Que curso desea matricular?" << endl;
+		cin >> curso;
+		cout << "Los grupos con ese curso son los siguientes: " << endl;
+		cout << listaG->mostrarGruposEspecifico(curso) << endl;
+		cout << "Ingrese el numero de grupo en el que desea matricular" << endl;
+		cin >> num;
+	}
+	return true;
+}
+
+//terminar
+bool Interfaz::desmatricularEstudiante(ListaEst* listaE) {
+	string ced, curso;
+	cout << "Digite la cedula del estudiante que se desea desmatricular" << endl;
+	cin >> ced;
+	if (listaE->siExisteEstudiante(ced)) {
+		cout << "Digite el curso que desea desmatricular" << endl;
+		cin >> curso;
+	}
+	return true;
+}
+
+//-------------MENU-BUSQUEDAS-E-INFORMES--------------
+int Interfaz::subMenuBusquedaseInformes() {
+	int op;
+	system("cls");
+	cout << "---------SUBMENU-BUSQUEDAS-E-INFORMES-------" << endl;
+	cout << "1- Informes Profesores Registrados" << endl;
+	cout << "2- Informes Estudiante Registrados" << endl;
+	cout << "3- INformes Cursos Matriculados por un Estudiante" << endl;
+	cout << "4- Informe Profesor Especifico" << endl;
+	cout << "5- Informe Periodos Habilitados para el Annio" << endl;
+	cout << "6- Informe grupo Especifico" << endl;
+	cout << "7- Regresar al Menu Principal" << endl;
+	cin >> op;
+	return op;
+}
+
+string Interfaz::profesoresRegistrados(ListaProfesores* listaP){
+}
+
+string Interfaz::estudiantesRegistrados(){}
+string Interfaz::cursosMatriculadosPorEstudiante(){}
+string Interfaz::profesorEspecifico(){}
+string Interfaz::periodosHabilitadosParaElAnnio(){}
+string Interfaz::informeGrupoEspecifico(){}
