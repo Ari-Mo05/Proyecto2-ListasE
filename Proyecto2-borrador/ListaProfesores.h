@@ -12,4 +12,5 @@ class ListaProfesores {
 		string mostrarProfesores();
 		Profesor* obtenerProfesor(string);
 		bool existeProfesor(string);
+		string toString();
 };
