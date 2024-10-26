@@ -39,3 +39,13 @@ bool ListaProfesores::existeProfesor(string ced) {
 	}
 	return false;
 }
+
+string ListaProfesores::toString() {
+	stringstream s;
+	pExt = ppio;
+	while (pExt != NULL) {
+		s << pExt->getProfe()->toString() << endl;
+		pExt = pExt->getSiguiente();
+	}
+	return s.str();
+}
