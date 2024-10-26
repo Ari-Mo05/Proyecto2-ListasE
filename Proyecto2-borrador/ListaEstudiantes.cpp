@@ -32,3 +32,14 @@ Estudiante* ListaEst::obtenerEstudiante(string id){
 	}
 	return nullptr;
 }
+
+bool ListaEst::siExisteEstudiante(string id) {
+	actual = ppio;
+	while (actual != nullptr) {
+		if (actual->getEstudiante()->getId() == id) {
+			return true;
+		}
+		actual = actual->getSiguiente();
+	}
+	return false;
+}
