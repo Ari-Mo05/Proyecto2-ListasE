@@ -11,7 +11,7 @@ ListaEst::~ListaEst(){
 }
 
 bool ListaEst::ingresaEstudiante(Estudiante& estu){
-	
+	return true;
 }
 
 string ListaEst::mostrarEstudiantes(){
