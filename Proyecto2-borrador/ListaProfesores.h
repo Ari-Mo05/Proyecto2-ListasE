@@ -11,4 +11,5 @@ class ListaProfesores {
 		bool agregarProfesor(Profesor&);
 		string mostrarProfesores();
 		Profesor* obtenerProfesor(string);
+		bool existeProfesor(string);
 };
