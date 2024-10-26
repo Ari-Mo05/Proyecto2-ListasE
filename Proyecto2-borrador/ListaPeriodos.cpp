@@ -10,7 +10,21 @@ ListaPer::~ListaPer(){
 }
 
 bool ListaPer::agregarPeriodo(Periodo& peri) {
-
+	if (peri.getMesInicio() == "Enero" || peri.getMesInicio() == "Abril" || peri.getMesInicio() == "Julio" || peri.getMesInicio() == "Octubre")
+		if (peri.getMesCierre() == "Marzo" || peri.getMesCierre() == "Junio" || peri.getMesCierre() == "Septiembre" || peri.getMesCierre() == "Diciembre")
+			if (ppio == NULL) {
+				ppio = new NodoPeri(peri, ppio);
+				return true;
+			}
+			else {
+				actual = ppio;
+				while (actual->getSig() != NULL) {
+					actual = actual->getSig();
+				}
+				actual->setSig(new NodoPeri(peri, NULL));
+				return true;
+			}
+	return false;
 }
 
 bool ListaPer::vacia(){
