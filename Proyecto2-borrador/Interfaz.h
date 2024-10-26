@@ -22,8 +22,16 @@ class Interfaz {
 		static ListaCurso* ingresaCurso();
 		static ListaGrupo* ingresaGrupo(ListaCurso*, ListaProfesores*);
 		static bool asignarProfesor(ListaProfesores*, ListaGrupo*);
-
 		static int subMenuMatricula();
+		static bool matricularEstudiante(ListaEst*, ListaGrupo*);
+		static bool desmatricularEstudiante(ListaEst*);
 		static int subMenuBusquedaseInformes();
+		static string profesoresRegistrados(ListaProfesores*);
+		static string estudiantesRegistrados();
+		static string cursosMatriculadosPorEstudiante();
+		static string profesorEspecifico();
+		static string periodosHabilitadosParaElAnnio();
+		static string informeGrupoEspecifico();
+		
 		static int guardarDatosArchivos();
 };
