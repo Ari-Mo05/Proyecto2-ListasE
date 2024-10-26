@@ -1,4 +1,4 @@
-include"Interfaz.h"
+#include"Interfaz.h"
 
 int Interfaz::menuPrincipal() {
 	int op;
@@ -16,6 +16,7 @@ int Interfaz::menuPrincipal() {
 	return op;
 }
 
+// -------------------------MENU-ADMINISTRACION-----------------------
 int Interfaz::subMenuAdministracion() {
 	int op;
 	system("cls");
@@ -58,7 +59,7 @@ ListaEst* Interfaz::ingresaEstudiante() {
 	ListaEst* listaE = new ListaEst();
 	cout << "Ingrese el nombre del estudiante" << endl;
 	cin >> nombre;
-	cout << "Iingrese la cedual del estudiante" << endl;
+	cout << "Ingrese la cedula del estudiante" << endl;
 	cin >> id;
 	cout << "Ingrese la especialidad del estudiante" << endl;
 	cin >> espe;
@@ -149,8 +150,14 @@ ListaGrupo* Interfaz::ingresaGrupo(ListaCurso* listaCur, ListaProfesores* listaP
 	return listaG;
 }
 
-bool Interfaz::asignarProfesor(Profesor* prof, ListaGrupo* listaG){
+bool Interfaz::asignarProfesor(ListaProfesores* listaP, ListaGrupo* listaG){
 	int numG;
+	string id;
+	Profesor* prof = new Profesor();
+	cout << "Ingrese la cedula del profesor" << endl;
+	cin >> id;
+	if (listaP->existeProfesor(id))
+		prof = listaP->obtenerProfesor(id);
 	cout << "Ingrese el numero del grupo" << endl;
 	cin >> numG;
 	if (listaG->existeGrupo(numG)) {
@@ -159,3 +166,5 @@ bool Interfaz::asignarProfesor(Profesor* prof, ListaGrupo* listaG){
 	}
 	return false;
 }
+
+//--------------------MENU-MATRICULA----------------------------------
