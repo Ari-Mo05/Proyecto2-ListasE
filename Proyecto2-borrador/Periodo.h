@@ -12,5 +12,7 @@ class Periodo {
 		Periodo(string = " ", string  = " ");
 		virtual ~Periodo();
 		string toString();
+		string getMesInicio()const;
+		string getMesCierre()const;
 		//....
 };
