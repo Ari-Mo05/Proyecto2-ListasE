@@ -10,20 +10,19 @@ ListaPer::~ListaPer(){
 }
 
 bool ListaPer::agregarPeriodo(Periodo& peri) {
-	if (peri.getMesInicio() == "Enero" || peri.getMesInicio() == "Abril" || peri.getMesInicio() == "Julio" || peri.getMesInicio() == "Octubre")
-		if (peri.getMesCierre() == "Marzo" || peri.getMesCierre() == "Junio" || peri.getMesCierre() == "Septiembre" || peri.getMesCierre() == "Diciembre")
-			if (ppio == NULL) {
-				ppio = new NodoPeri(peri, ppio);
-				return true;
+	if (siExistePeriodo((Periodo*)&peri))
+		if (ppio == NULL) {
+			ppio = new NodoPeri(peri, ppio);				
+			return true;
+		}
+		else {
+			actual = ppio;			
+			while (actual->getSig() != NULL) {
+				actual = actual->getSig();
 			}
-			else {
-				actual = ppio;
-				while (actual->getSig() != NULL) {
-					actual = actual->getSig();
-				}
-				actual->setSig(new NodoPeri(peri, NULL));
-				return true;
-			}
+			actual->setSig(new NodoPeri(peri, NULL));
+			return true;
+		}
 	return false;
 }
 
@@ -37,6 +36,12 @@ string ListaPer::mostrarPeriodos(){
 	while (actual != nullptr)
 		p << actual->mostrarPeriodo() << endl;
 	return p.str();
+}
+
+bool ListaPer::siExistePeriodo(Periodo* peri) {
+	if (peri->getMesInicio() == "Enero" && peri->getMesCierre() == "Marzo" || peri->getMesInicio() == "Abril" && peri->getMesCierre() == "Junio" || peri->getMesInicio() == "Julio" && peri->getMesCierre() == "Septiembre" || peri->getMesInicio() == "Octubre" && peri->getMesCierre() == "Diciembre")
+		return true;
+	return false;
 }
 
 ////no se si se pueda hacer asi, en eso estoy jajaja 
