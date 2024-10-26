@@ -9,6 +9,10 @@ ListaCurso::~ListaCurso(){
 		delete actual;
 }
 
+bool ListaCurso::agregarCurso(Curso& cur) {
+
+}
+
 string ListaCurso::mostrarCursos(){
 	stringstream c;
 	actual = ppio;
