@@ -91,6 +91,7 @@ ListaCurso* Interfaz::ingresaCurso(){
 	Periodo* peri = NULL;
 	Curso* cur = NULL;
 	ListaCurso* listaC = new ListaCurso();
+	ListaPer* listaP = new ListaPer();
 	cout << "Ingresar el nombre del curso" << endl;
 	cin >> nombreCurso;
 	cout << "Ingrese el codigo del curso" << endl;
@@ -105,15 +106,57 @@ ListaCurso* Interfaz::ingresaCurso(){
 	cout << "Ingrese el mes de cierre del periodo" << endl;
 	cin >> mesCierre;
 	peri = new Periodo(mesInicio, mesCierre);
-	cur = new Curso(nombreCurso, idCurso, precioCurso, estado, peri);
-	listaC->agregarCurso(*cur);
+	if (listaP->siExistePeriodo(peri)) {
+		cout << "El periodo es valido";
+		cur = new Curso(nombreCurso, idCurso, precioCurso, estado, peri);
+		listaC->agregarCurso(*cur);
+	}
+	else
+		cout << "El periodo no es valido";
 	return listaC;
 }
 
-ListaGrupo* Interfaz::ingresaGrupo(){
-	
+ListaGrupo* Interfaz::ingresaGrupo(ListaCurso* listaCur, ListaProfesores* listaProf){
+	int numGrupo, capacidadAlumnos, cantAlumnos, horaInicio, horaFinal;
+	string codCurso, diaSemana, id;
+	Curso* curso = new Curso();
+	Horario* hor = NULL;
+	Profesor* profe = NULL;
+	Grupo* grupo = NULL;
+	ListaGrupo* listaG = new ListaGrupo();
+	cout << "Ingrese el numero del grupo" << endl;
+	cin >> numGrupo;
+	cout << "Ingrese la capacidad de alumnos" << endl;
+	cin >> capacidadAlumnos;
+	cout << "Ingrese la cantidad de alumnos" << endl;
+	cin >> cantAlumnos;
+	cout << "Ingrese el codigo del curso" << endl;
+	cin >> codCurso;
+	curso = listaCur->obtenerCurso(codCurso);
+	cout << "Ingrese el horario: " << endl;
+	cout << "Ingrese la hora de inicio" << endl;
+	cin >> horaInicio;
+	cout << "Ingrese la hora a la que finaliza la clase" << endl;
+	cin >> horaFinal;
+	cout << "Que dia de la semana?" << endl;
+	cin >> diaSemana;
+	hor = new Horario(horaInicio, horaFinal, diaSemana);
+	cout << "Ingrese la cedula del profesor" << endl;
+	cin >> id;
+	profe = listaProf->obtenerProfesor(id);
+	grupo = new Grupo(numGrupo, capacidadAlumnos, cantAlumnos, curso, hor, profe);
+	listaG->ingresarGrupos(grupo);
+	return listaG;
 }
 
-bool Interfaz::asignarProfesor(Profesor&){
+bool Interfaz::asignarProfesor(Profesor* prof, ListaGrupo* listaG){
+	int numG;
 	
+	cout << "Ingrese el numero del grupo" << endl;
+	cin >> numG;
+	if (listaG->existeGrupo(numG)) {
+		listaG->obtenerGrupo(numG)->setProfesor(prof);
+		return true;
+	}
+	return false;
 }
