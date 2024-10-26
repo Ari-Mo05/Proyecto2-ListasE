@@ -8,6 +8,7 @@ class ListaCurso {
 	public:
 		ListaCurso();
 		virtual ~ListaCurso();
+		bool agregarCurso(Curso&);
 		string mostrarCursos();
 		Curso* obtenerCurso(string);
 		//...
