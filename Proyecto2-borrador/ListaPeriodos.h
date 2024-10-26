@@ -11,6 +11,7 @@ class ListaPer {
 		bool agregarPeriodo(Periodo&);
 		bool vacia();
 		string mostrarPeriodos();
+		bool siExistePeriodo(Periodo*);
 		/*Periodo* obtenerPeriodo(int);*/
 		//...
 };
