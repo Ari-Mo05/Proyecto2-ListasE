@@ -8,6 +8,7 @@ class ListaPer {
 	public:
 		ListaPer();
 		virtual ~ListaPer();
+		bool agregarPeriodo(Periodo&);
 		bool vacia();
 		string mostrarPeriodos();
 		/*Periodo* obtenerPeriodo(int);*/
