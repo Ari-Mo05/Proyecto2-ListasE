@@ -8,6 +8,7 @@ class ListaEst {
 	public:
 		ListaEst();
 		virtual ~ListaEst();
+		bool ingresaEstudiante(Estudiante&);
 		string mostrarEstudiantes();
 		Estudiante* obtenerEstudiante(string);
 		//...
