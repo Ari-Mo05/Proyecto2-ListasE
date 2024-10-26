@@ -1,22 +1,19 @@
 #include "ListaPeriodos.h"
 
-ListaPer::ListaPer():ppio(nullptr), actual(nullptr)
-{
+ListaPer::ListaPer():ppio(nullptr), actual(nullptr){
 }
 
-ListaPer::~ListaPer()
-{
+ListaPer::~ListaPer(){
 	actual = ppio;
 	while (actual != nullptr)
 		delete actual;
 }
 
-bool ListaPer::vacia()
-{
+bool ListaPer::vacia(){
 	return ppio = nullptr;
 }
-string ListaPer::mostrarPeriodos()
-{
+
+string ListaPer::mostrarPeriodos(){
 	stringstream p;
 	actual = ppio;
 	while (actual != nullptr)
@@ -25,8 +22,7 @@ string ListaPer::mostrarPeriodos()
 }
 
 ////no se si se pueda hacer asi, en eso estoy jajaja 
-//Periodo* ListaPer::obtenerPeriodo(int codP)
-//{ 
+//Periodo* ListaPer::obtenerPeriodo(int codP){
 //	if (vacia()) return nullptr;
 //	switch (codP) {
 //	case 1: break;  // periodo enero/marzo
