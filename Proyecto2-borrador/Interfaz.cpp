@@ -72,7 +72,39 @@ ListaEst* Interfaz::ingresaEstudiante() {
 	listaE->ingresaEstudiante(*estu);
 	return listaE;
 }
-ListaPer* Interfaz::ingresaPeriodo(){}
-ListaCurso* Interfaz::ingresaCurso(){}
-ListaGrupo* Interfaz::ingresaGrupo(){}
-bool Interfaz::asignarProfesor(Profesor&){}
+ListaPer* Interfaz::ingresaPeriodo(){
+	
+}
+
+ListaCurso* Interfaz::ingresaCurso(){
+	string nombreCurso, idCurso, estado, mesInicio, mesCierre;
+	double precioCurso;
+	Periodo* peri = NULL;
+	Curso* cur = NULL;
+	ListaCurso* listaC = new ListaCurso();
+	cout << "Ingresar el nombre del curso" << endl;
+	cin >> nombreCurso;
+	cout << "Ingrese el codigo del curso" << endl;
+	cin >> idCurso;
+	cout << "Ingrese el precio del curso" << endl;
+	cin >> precioCurso;
+	cout << "Estado del curso: Disponible o noDisponible" << endl;
+	cin >> estado;
+	cout << "Ingresa el periodo:" << endl;
+	cout << "Ingrese el mes de inicio del periodo" << endl;
+	cin >> mesInicio;
+	cout << "Ingrese el mes de cierre del periodo" << endl;
+	cin >> mesCierre;
+	peri = new Periodo(mesInicio, mesCierre);
+	cur = new Curso(nombreCurso, idCurso, precioCurso, estado, peri);
+	listaC->agregarCurso(*cur);
+	return listaC;
+}
+
+ListaGrupo* Interfaz::ingresaGrupo(){
+	
+}
+
+bool Interfaz::asignarProfesor(Profesor&){
+	
+}
