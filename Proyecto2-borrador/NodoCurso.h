@@ -1,16 +1,18 @@
 #pragma once
-#include "NodoCurso.h"
+#include "Curso.h"
 
-class ListaCurso {
+class NodoCurso {
 	private:
-		NodoCurso* ppio;
-		NodoCurso* actual;
+		Curso* cur;
+		NodoCurso* sig;
 	public:
-		ListaCurso();
-		virtual ~ListaCurso();
-		bool agregarCurso(Curso&);
-		string mostrarCursos();
-		Curso* obtenerCurso(string);
+		NodoCurso(Curso&, NodoCurso*);
+		virtual ~NodoCurso();
+		string toString();
+		Curso* getCurso();
+		NodoCurso* getSiguiente();
+		void setCurso(Curso*);
+		void setSiguiente(NodoCurso*);
+		string mostrarCurso();
 		//...
 };
-
