@@ -6,7 +6,7 @@ class NodoProfes {
 		Profesor* profe;
 		NodoProfes* sig;
 	public:
-		NodoProfes(Profesor*, NodoProfes*);
+		NodoProfes(Profesor&, NodoProfes*);
 		virtual ~NodoProfes();
 		Profesor* getProfe();
 		NodoProfes* getSiguiente();
