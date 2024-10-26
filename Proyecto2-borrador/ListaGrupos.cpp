@@ -27,3 +27,14 @@ Grupo* ListaGrupo::obtenerGrupo(int numG){
 	}
 	return nullptr;
 }
+
+bool ListaGrupo::existeGrupo(int cod) {
+	actual = ppio;
+	while (actual != nullptr) {
+		if (actual->getGrupo()->getNumGrupo() == cod) {
+			return true;
+		}
+		actual = actual->getSiguiente();
+	}
+	return false;
+}
