@@ -9,6 +9,10 @@ ListaPer::~ListaPer(){
 		delete actual;
 }
 
+bool ListaPer::agregarPeriodo(Periodo& peri) {
+
+}
+
 bool ListaPer::vacia(){
 	return ppio = nullptr;
 }
