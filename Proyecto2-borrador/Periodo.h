@@ -6,10 +6,10 @@ using namespace std;
 
 class Periodo {
 	private:
-		Periodo* per;
+		string mesDeInicio;
+		string mesDeCierre;
 	public:
-		Periodo();
-		Periodo(Periodo*);
+		Periodo(string = " ", string  = " ");
 		virtual ~Periodo();
 		string toString();
 		//....
