@@ -6,7 +6,7 @@ class NodoPeri {
 		Periodo* peri;
 		NodoPeri* sig;
 	public:
-		NodoPeri(Periodo*, NodoPeri*);
+		NodoPeri(Periodo&, NodoPeri*);
 		virtual ~NodoPeri();
 		NodoPeri* getSig();
 		Periodo* getPeriodo();
