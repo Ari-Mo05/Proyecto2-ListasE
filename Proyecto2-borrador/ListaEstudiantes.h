@@ -11,5 +11,6 @@ class ListaEst {
 		bool ingresaEstudiante(Estudiante&);
 		string mostrarEstudiantes();
 		Estudiante* obtenerEstudiante(string);
+		bool siExisteEstudiante(string);
 		//...
 };
