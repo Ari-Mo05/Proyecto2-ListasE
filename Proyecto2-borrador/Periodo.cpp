@@ -4,8 +4,7 @@ Periodo::Periodo(string inicio, string cierre){
     mesDeInicio = inicio;
     cierre = cierre;
 }
-Periodo::~Periodo()
-{
+Periodo::~Periodo(){
 }
 
 string Periodo::toString(){
@@ -13,4 +12,12 @@ string Periodo::toString(){
     p << "------INFORMACION DE LOS PERIODOS------" << endl;
     //...
     return p.str();
+}
+
+string Periodo::getMesInicio()const {
+    return mesDeInicio;
+}
+
+string Periodo::getMesCierre()const {
+    return mesDeCierre;
 }
