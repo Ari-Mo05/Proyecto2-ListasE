@@ -1,0 +1,20 @@
+﻿  Curso.cpp
+  Estudiante.cpp
+  Grupo.cpp
+  Horario.cpp
+  ListaCursos.cpp
+  ListaEstudiantes.cpp
+  ListaGrupos.cpp
+  ListaMatricula.cpp
+  ListaPeriodos.cpp
+  Matricula.cpp
+  NodoCurso.cpp
+  NodoEst.cpp
+  NodoGrupo.cpp
+  NodoMat.cpp
+  NodoPeriodo.cpp
+  Periodo.cpp
+  Profesor.cpp
+  Generando código...
+MSVCRTD.lib(exe_main.obj) : error LNK2019: símbolo externo main sin resolver al que se hace referencia en la función "int __cdecl invoke_main(void)" (?invoke_main@@YAHXZ)
+C:\Users\user\source\repos\Proyecto2-borrador\x64\Debug\Proyecto2-borrador.exe : fatal error LNK1120: 1 externos sin resolver
