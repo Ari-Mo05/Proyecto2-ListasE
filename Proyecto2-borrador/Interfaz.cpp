@@ -1,4 +1,4 @@
-#include"Interfaz.h"
+include"Interfaz.h"
 
 int Interfaz::menuPrincipal() {
 	int op;
@@ -151,7 +151,6 @@ ListaGrupo* Interfaz::ingresaGrupo(ListaCurso* listaCur, ListaProfesores* listaP
 
 bool Interfaz::asignarProfesor(Profesor* prof, ListaGrupo* listaG){
 	int numG;
-	
 	cout << "Ingrese el numero del grupo" << endl;
 	cin >> numG;
 	if (listaG->existeGrupo(numG)) {
