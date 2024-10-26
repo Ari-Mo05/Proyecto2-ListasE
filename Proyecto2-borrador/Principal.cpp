@@ -36,7 +36,15 @@ int main() {
 			}
 			break;
 			case 2: {
-				
+				op = Interfaz::subMenuMatricula();
+				switch (op) {
+					case 1: {
+
+					}break;
+					case 2: {
+
+					}break;
+				}
 			}break;
 			case 3: {
 		
