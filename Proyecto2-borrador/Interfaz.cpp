@@ -73,7 +73,16 @@ ListaEst* Interfaz::ingresaEstudiante() {
 	return listaE;
 }
 ListaPer* Interfaz::ingresaPeriodo(){
-	
+	string mesInicio, mesCierre;
+	Periodo* peri = NULL;
+	ListaPer* listaP = new ListaPer();
+	cout << "Ingrese el mes de inicio del periodo" << endl;
+	cin >> mesInicio;
+	cout << "Ingres el mes de cierre del periodo" << endl;
+	cin >> mesCierre;
+	peri = new Periodo(mesInicio, mesCierre);
+	listaP->agregarPeriodo(*peri);
+	return listaP;
 }
 
 ListaCurso* Interfaz::ingresaCurso(){
