@@ -9,6 +9,10 @@ ListaGrupo::~ListaGrupo(){
 		delete actual;
 }
 
+bool ListaGrupo::ingresarGrupos(Grupo* grup) {
+	return true;
+}
+
 string ListaGrupo::mostrarGrupos(){
 	stringstream g;
 	actual = ppio;
@@ -38,3 +42,4 @@ bool ListaGrupo::existeGrupo(int cod) {
 	}
 	return false;
 }
+
