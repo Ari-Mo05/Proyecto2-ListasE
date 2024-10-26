@@ -1,18 +1,15 @@
 #include "ListaMatricula.h"
 
-ListaMatri::ListaMatri() :ppio(nullptr), actual(nullptr)
-{
+ListaMatri::ListaMatri() :ppio(nullptr), actual(nullptr){
 }
 
-ListaMatri::~ListaMatri()
-{
+ListaMatri::~ListaMatri(){
 	actual = ppio;
 	while (actual != nullptr)
 		delete actual;
 }
 
-string ListaMatri::mostrarMatricula()
-{
+string ListaMatri::mostrarMatricula(){
 	stringstream m;
 	actual = ppio;
 	while (actual != nullptr)
