@@ -1,9 +1,8 @@
 #include "NodoCurso.h"
 
 
-NodoCurso::NodoCurso(Curso* cu, NodoCurso* si) 
-{
-    cur = cu;
+NodoCurso::NodoCurso(Curso& cu, NodoCurso* si) {
+    cur = (Curso*)&cu;
     sig = si;
 }
 
@@ -16,24 +15,21 @@ Curso* NodoCurso::getCurso()
     return cur;
 }
 
-NodoCurso* NodoCurso::getSiguiente()
-{
+NodoCurso* NodoCurso::getSiguiente(){
     return sig;
 }
 
-void NodoCurso::setCurso(Curso* cu)
-{
+void NodoCurso::setCurso(Curso* cu){
     cur = cu;
 }
 
-void NodoCurso::setSiguiente(NodoCurso* si)
-{
+void NodoCurso::setSiguiente(NodoCurso* si){
     sig = si;
 }
 
-string NodoCurso::mostrarCurso()
-{
+string NodoCurso::mostrarCurso(){
     stringstream c;
     c << cur->toString() << endl;
     return c.str();
 }
+
