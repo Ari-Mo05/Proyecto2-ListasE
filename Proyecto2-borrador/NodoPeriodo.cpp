@@ -1,8 +1,7 @@
 #include "NodoPeriodo.h"
 
-NodoPeri::NodoPeri(Periodo* per, NodoPeri* si)
-{
-    peri = per;
+NodoPeri::NodoPeri(Periodo& per, NodoPeri* si){
+    peri = (Periodo*)&per;
     sig = si;
 }
 
@@ -20,8 +19,7 @@ Periodo* NodoPeri::getPeriodo()
     return peri;
 }
 
-void NodoPeri::setSig(NodoPeri* si)
-{
+void NodoPeri::setSig(NodoPeri* si){
     sig = si;
 }
 
@@ -36,3 +34,4 @@ string NodoPeri::mostrarPeriodo()
     p << peri->toString() << endl;
     return p.str();
 }
+
