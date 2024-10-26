@@ -1,18 +1,15 @@
 #include "ListaGrupos.h"
 
-ListaGrupo::ListaGrupo() :ppio(nullptr), actual(nullptr)
-{
+ListaGrupo::ListaGrupo() :ppio(nullptr), actual(nullptr){
 }
 
-ListaGrupo::~ListaGrupo()
-{
+ListaGrupo::~ListaGrupo(){
 	actual = ppio;
 	while (actual != nullptr)
 		delete actual;
 }
 
-string ListaGrupo::mostrarGrupos()
-{
+string ListaGrupo::mostrarGrupos(){
 	stringstream g;
 	actual = ppio;
 	while (actual != nullptr)
@@ -20,8 +17,7 @@ string ListaGrupo::mostrarGrupos()
 	return g.str();
 }
 
-Grupo* ListaGrupo::obtenerGrupo(int numG)
-{
+Grupo* ListaGrupo::obtenerGrupo(int numG){
 	actual = ppio;
 	while (actual != nullptr) {
 		if (actual->getGrupo()->getNumGrupo() == numG) {
