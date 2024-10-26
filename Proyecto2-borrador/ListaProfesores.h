@@ -10,5 +10,5 @@ class ListaProfesores {
 		virtual ~ListaProfesores();
 		bool agregarProfesor(Profesor&);
 		string mostrarProfesores();
-		Estudiante* obtenerProfesor(string);
+		Profesor* obtenerProfesor(string);
 };
