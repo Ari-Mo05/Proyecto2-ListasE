@@ -1,19 +1,14 @@
 #include "Periodo.h"
 
-Periodo::Periodo()
-{
+Periodo::Periodo(string inicio, string cierre){
+    mesDeInicio = inicio;
+    cierre = cierre;
 }
-
-Periodo::Periodo(Periodo* pe) :per(pe){
-}
-
-
 Periodo::~Periodo()
 {
 }
 
-string Periodo::toString()
-{
+string Periodo::toString(){
     stringstream p;
     p << "------INFORMACION DE LOS PERIODOS------" << endl;
     //...
