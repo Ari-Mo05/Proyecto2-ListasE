@@ -1,19 +1,20 @@
 #include "ListaEstudiantes.h"
 
-ListaEst::ListaEst() :ppio(nullptr), actual(nullptr)
-{
+ListaEst::ListaEst() :ppio(nullptr), actual(nullptr){
 
 }
 
-ListaEst::~ListaEst()
-{
+ListaEst::~ListaEst(){
 	actual = ppio;
 	while (actual != nullptr)
 		delete actual;
 }
 
-string ListaEst::mostrarEstudiantes()
-{
+bool ListaEst::ingresaEstudiante(Estudiante& estu){
+	
+}
+
+string ListaEst::mostrarEstudiantes(){
 	stringstream e;
 	actual = ppio;
 	while (actual != nullptr)
@@ -21,8 +22,7 @@ string ListaEst::mostrarEstudiantes()
 	return e.str();
 }
 
-Estudiante* ListaEst::obtenerEstudiante(string id)
-{
+Estudiante* ListaEst::obtenerEstudiante(string id){
 	actual = ppio;
 	while (actual != nullptr) {
 		if (actual->getEstudiante()->getId() == id) {
