@@ -10,15 +10,17 @@ ListaCurso::~ListaCurso(){
 }
 
 bool ListaCurso::agregarCurso(Curso& cur) {
-
+	return true;
 }
 
 string ListaCurso::mostrarCursos(){
-	stringstream c;
+	stringstream s;
 	actual = ppio;
-	while (actual != nullptr)
-		c << actual->mostrarCurso() << endl;
-	return c.str();
+	while (actual != NULL) {
+		s << actual->mostrarCurso() << endl;
+		actual = actual->getSiguiente();
+	}
+	return s.str();
 }
 
 Curso* ListaCurso::obtenerCurso(string idC){
