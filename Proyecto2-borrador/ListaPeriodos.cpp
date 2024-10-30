@@ -10,7 +10,7 @@ ListaPer::~ListaPer(){
 }
 
 bool ListaPer::agregarPeriodo(Periodo& peri) {
-	if (siExistePeriodo((Periodo*)&peri))
+	if (periodoPermitido((Periodo*)&peri) && !existePeriodo((Periodo*)&peri))
 		if (ppio == NULL) {
 			ppio = new NodoPeri(peri, ppio);				
 			return true;
@@ -38,9 +38,20 @@ string ListaPer::mostrarPeriodos(){
 	return p.str();
 }
 
-bool ListaPer::siExistePeriodo(Periodo* peri) {
+bool ListaPer::periodoPermitido(Periodo* peri) {
 	if (peri->getMesInicio() == "Enero" && peri->getMesCierre() == "Marzo" || peri->getMesInicio() == "Abril" && peri->getMesCierre() == "Junio" || peri->getMesInicio() == "Julio" && peri->getMesCierre() == "Septiembre" || peri->getMesInicio() == "Octubre" && peri->getMesCierre() == "Diciembre")
 		return true;
+	return false;
+}
+
+bool ListaPer::existePeriodo(Periodo* per) {
+	actual = ppio;
+	while (actual != NULL) {
+		if (actual->getPeriodo() == per)
+			return true;
+		else
+			actual = actual->getSig();
+	}
 	return false;
 }
 
@@ -54,3 +65,4 @@ bool ListaPer::siExistePeriodo(Periodo* peri) {
 //	case 4: break;	// periodo octubre/diciembre  
 //	}
 //}
+
