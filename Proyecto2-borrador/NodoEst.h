@@ -6,7 +6,7 @@ class NodoEst {
 		Estudiante* est;
 		NodoEst* sig;
 	public:
-		NodoEst(Estudiante*, NodoEst*);
+		NodoEst(Estudiante&, NodoEst*);
 		virtual ~NodoEst();
 		Estudiante* getEstudiante();
 		NodoEst* getSiguiente();
