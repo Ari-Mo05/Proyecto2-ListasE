@@ -47,7 +47,22 @@ int main() {
 				}
 			}break;
 			case 3: {
-		
+				op = Interfaz::subMenuBusquedaseInformes();
+				switch (op) {
+					case 1: {
+						Interfaz::profesoresRegistrados(listaP);
+					}break;
+					case 2: {}break;
+					case 3: {}break;
+					case 4: {
+						Interfaz::profesorEspecifico(listaP);
+					} break;
+					case 5: {
+						Interfaz::periodosHabilitadosParaElAnnio(listaPer);
+					}break;
+					case 6: {}break;
+				}
+				Sleep(4000);
 			}break;
 			case 4: {
 		
@@ -60,3 +75,4 @@ int main() {
 	system("pause");
 	return 0;
 }
+
