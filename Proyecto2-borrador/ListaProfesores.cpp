@@ -8,9 +8,22 @@ ListaProfesores::~ListaProfesores() {
 	delete ppio;
 	delete pExt;
 }
+
 bool ListaProfesores::agregarProfesor(Profesor& prof) {
-	return true;
+	pExt = ppio;
+	if (!existeProfesor(prof.getId())) {
+		if (ppio == NULL)
+			ppio = new NodoProfes(prof, ppio);
+		else {
+			while (pExt->getSiguiente() != NULL)
+				pExt = pExt->getSiguiente();
+			pExt->setSiguiente(new NodoProfes(prof, NULL));
+		}
+		return true;
+	}
+	return false;
 }
+
 string ListaProfesores::mostrarProfesores() {
 	stringstream s;
 	pExt = ppio;
