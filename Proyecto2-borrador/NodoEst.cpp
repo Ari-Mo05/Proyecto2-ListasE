@@ -1,8 +1,7 @@
 #include "NodoEst.h"
 
-NodoEst::NodoEst(Estudiante* estu, NodoEst* si)
-{
-    est = estu;
+NodoEst::NodoEst(Estudiante& estu, NodoEst* si){
+    est = (Estudiante*)&estu;
     sig = si;
 }
 
