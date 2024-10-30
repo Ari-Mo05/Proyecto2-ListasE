@@ -8,7 +8,7 @@ class ListaProfesores {
 	public:
 		ListaProfesores();
 		virtual ~ListaProfesores();
-		bool agregarProfesor(Profesor&);
+		bool agregarProfesor(Profesor&, ListaE*);
 		string mostrarProfesores();
 		Profesor* obtenerProfesor(string);
 		bool existeProfesor(string);
