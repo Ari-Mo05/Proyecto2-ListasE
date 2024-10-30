@@ -1,17 +1,16 @@
 #include "NodoMat.h"
 
-NodoMat::NodoMat(Matricula* mat, NodoMat* si)
-{
-    matri = mat;
+NodoMat::NodoMat(Matricula& mat, NodoMat* si){
+    matri = (Matricula*)&mat;
     sig = si;
 }
 
-NodoMat::~NodoMat()
-{
+NodoMat::~NodoMat(){
+    delete sig;
+    delete matri;
 }
 
-Matricula* NodoMat::getMatricula()
-{
+Matricula* NodoMat::getMatricula(){
     return matri;
 }
 
@@ -30,9 +29,8 @@ void NodoMat::setSiguiente(NodoMat* si)
     sig = si;
 }
 
-string NodoMat::mostrarMatricula()
-{
+string NodoMat::mostrarMatricula(){
     stringstream m;
-    m << matri->toString() << endl;
+    m << matri->factura() << endl;
     return m.str();
 }
