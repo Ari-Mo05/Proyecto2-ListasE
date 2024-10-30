@@ -6,7 +6,7 @@ class NodoMat {
 		Matricula* matri;
 		NodoMat* sig;
 	public:
-		NodoMat(Matricula*, NodoMat*);
+		NodoMat(Matricula&, NodoMat*);
 		virtual ~NodoMat();
 		Matricula* getMatricula();
 		NodoMat* getSiguiente();
