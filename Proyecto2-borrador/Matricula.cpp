@@ -31,11 +31,10 @@ void Matricula::setEstudiante(Estudiante* es){
     est = es;
 }
 
-string Matricula::factura(){
+string Matricula::toString(){
     stringstream s;
-    s << "Estudiante que matriculo: " << endl;
-    s << est->toString();
     s << "Grupo en el que matriculo: " << endl;
     s << grupo->toString();
     return s.str();
 }
+
