@@ -15,7 +15,7 @@ int main() {
 				op = Interfaz::subMenuAdministracion();
 				switch (op) {
 					case 1: {
-						listaP = Interfaz::ingresaProfesor();
+						listaP = Interfaz::ingresaProfesor(listaE);
 					}break;
 					case 2: {
 						listaE = Interfaz::ingresaEstudiante();
