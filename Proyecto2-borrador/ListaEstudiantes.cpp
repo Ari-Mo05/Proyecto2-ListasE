@@ -11,7 +11,18 @@ ListaEst::~ListaEst(){
 }
 
 bool ListaEst::ingresaEstudiante(Estudiante& estu){
-	return true;
+	actual = ppio;
+	if(!siExisteEstudiante(estu.getId())){
+		if (ppio == NULL)
+			ppio = new NodoEst(estu, ppio);
+		else {
+			while (actual->getSiguiente() != NULL)
+				actual = actual->getSiguiente();
+			actual->setSiguiente(new NodoEst(estu, NULL));
+		}
+		return true;
+	}
+	return false;
 }
 
 string ListaEst::mostrarEstudiantes(){
