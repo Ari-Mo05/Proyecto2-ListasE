@@ -2,6 +2,7 @@
 #include<iostream>
 #include<sstream>
 #include<fstream>
+#include"Windows.h"
 using namespace std;
 
 
@@ -26,12 +27,13 @@ class Interfaz {
 		static bool matricularEstudiante(ListaEst*, ListaGrupo*);
 		static bool desmatricularEstudiante(ListaEst*);
 		static int subMenuBusquedaseInformes();
-		static string profesoresRegistrados(ListaProfesores*);
-		static string estudiantesRegistrados();
-		static string cursosMatriculadosPorEstudiante();
-		static string profesorEspecifico();
-		static string periodosHabilitadosParaElAnnio();
-		static string informeGrupoEspecifico();
+		static void profesoresRegistrados(ListaProfesores*);
+		static void estudiantesRegistrados(ListaEst*);
+		static void cursosMatriculadosPorEstudiante();
+		static void profesorEspecifico(ListaProfesores*);
+		static void periodosHabilitadosParaElAnnio(ListaPer*);
+		static void informeGrupoEspecifico();
 		
 		static int guardarDatosArchivos();
 };
+
