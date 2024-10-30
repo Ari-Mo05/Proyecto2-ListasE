@@ -9,5 +9,5 @@ class ListaMatri {
 		ListaMatri();
 		virtual ~ListaMatri();
 		string mostrarMatricula();
-		//...
+		string factura(string);
 };
