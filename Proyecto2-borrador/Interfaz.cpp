@@ -28,11 +28,12 @@ int Interfaz::subMenuAdministracion() {
 	cout << "5- Ingresar Grupo" << endl;
 	cout << "6- Asignar Profesor o Grupo" << endl;
 	cout << "7- Regresar el Menu Principal" << endl;
+	cout << "Ingrese la opcion que desea" << endl;
 	cin >> op;
 	return op;
 }
 
-ListaProfesores* Interfaz::ingresaProfesor() {
+ListaProfesores* Interfaz::ingresaProfesor(ListaEst* listaE) {
 	string nombre, id, email, gradoAcademico;
 	int numTelefono;
 	Profesor* prof = NULL;
@@ -47,8 +48,16 @@ ListaProfesores* Interfaz::ingresaProfesor() {
 	cin >> numTelefono;
 	cout << "Ingrese el grado academico del profesor" << endl;
 	cin >> gradoAcademico;
+	cout << endl;
 	prof = new Profesor(nombre, id, numTelefono, email, gradoAcademico);
-	listaP->agregarProfesor(*prof);
+	if (listaP->agregarProfesor(*prof, listaE)) {
+		cout << "El profesor: " << endl;
+		cout << "--------------------------------------" << endl;
+		cout << prof->toString() << endl;
+		cout << "--------------------------------------" << endl;
+		cout << "Fue ingresado" << endl;
+		Sleep(4000);
+	}
 	return listaP;
 }
 
@@ -69,8 +78,16 @@ ListaEst* Interfaz::ingresaEstudiante() {
 	cin >> email;
 	cout << "Ingrese la edad del estudiante" << endl;
 	cin >> edad;
+	cout << endl;
 	estu = new Estudiante(nombre, id, espe, numeroTel, email, edad);
-	listaE->ingresaEstudiante(*estu);
+	if (listaE->ingresaEstudiante(*estu)) {
+		cout << "El estudiante: " << endl;
+		cout << "--------------------------------------" << endl;
+		cout << estu->toString() << endl;
+		cout << "--------------------------------------" << endl;
+		cout << "Fue ingresado" << endl;
+		Sleep(4000);
+	}
 	return listaE;
 }
 ListaPer* Interfaz::ingresaPeriodo(){
@@ -81,8 +98,16 @@ ListaPer* Interfaz::ingresaPeriodo(){
 	cin >> mesInicio;
 	cout << "Ingres el mes de cierre del periodo" << endl;
 	cin >> mesCierre;
+	cout << endl;
 	peri = new Periodo(mesInicio, mesCierre);
-	listaP->agregarPeriodo(*peri);
+	if (listaP->agregarPeriodo(*peri)) {
+		cout << "El periodo: " << endl;
+		cout << "----------------------------" << endl;
+		cout << peri->toString();
+		cout << "-----------------------------" << endl;
+		cout << "Fue ingresado" << endl;
+		Sleep(4000);
+	}
 	return listaP;
 }
 
@@ -106,14 +131,23 @@ ListaCurso* Interfaz::ingresaCurso(){
 	cin >> mesInicio;
 	cout << "Ingrese el mes de cierre del periodo" << endl;
 	cin >> mesCierre;
+	cout << endl;
 	peri = new Periodo(mesInicio, mesCierre);
-	if (listaP->siExistePeriodo(peri)) {
+	if (listaP->periodoPermitido(peri)) {
 		cout << "El periodo es valido";
 		cur = new Curso(nombreCurso, idCurso, precioCurso, estado, peri);
-		listaC->agregarCurso(*cur);
+		if (listaC->agregarCurso(*cur)) {
+			cout << "El curso: " << endl;
+			cout << "--------------------------------------" << endl;
+			cout << cur->toString() << endl;
+			cout << "--------------------------------------" << endl;
+			cout << "Fue ingresado" << endl;
+			Sleep(4000);
+		}
 	}
 	else
 		cout << "El periodo no es valido";
+
 	return listaC;
 }
 
@@ -144,9 +178,17 @@ ListaGrupo* Interfaz::ingresaGrupo(ListaCurso* listaCur, ListaProfesores* listaP
 	hor = new Horario(horaInicio, horaFinal, diaSemana);
 	cout << "Ingrese la cedula del profesor" << endl;
 	cin >> id;
+	cout << endl;
 	profe = listaProf->obtenerProfesor(id);
 	grupo = new Grupo(numGrupo, capacidadAlumnos, cantAlumnos, curso, hor, profe);
-	listaG->ingresarGrupos(grupo);
+	if (listaG->ingresarGrupos(grupo)) {
+		cout << "El grupo: " << endl;
+		cout << "--------------------------------------" << endl;
+		cout << grupo->toString() << endl;
+		cout << "--------------------------------------" << endl;
+		cout << "Fue ingresado" << endl;
+		Sleep(4000);
+	}
 	return listaG;
 }
 
@@ -215,20 +257,52 @@ int Interfaz::subMenuBusquedaseInformes() {
 	cout << "---------SUBMENU-BUSQUEDAS-E-INFORMES-------" << endl;
 	cout << "1- Informes Profesores Registrados" << endl;
 	cout << "2- Informes Estudiante Registrados" << endl;
-	cout << "3- INformes Cursos Matriculados por un Estudiante" << endl;
+	cout << "3- Informes Cursos Matriculados por un Estudiante" << endl;
 	cout << "4- Informe Profesor Especifico" << endl;
 	cout << "5- Informe Periodos Habilitados para el Annio" << endl;
 	cout << "6- Informe grupo Especifico" << endl;
 	cout << "7- Regresar al Menu Principal" << endl;
+	cout << "Ingrese la opcion que desea" << endl;
 	cin >> op;
 	return op;
 }
 
-string Interfaz::profesoresRegistrados(ListaProfesores* listaP){
+void Interfaz::profesoresRegistrados(ListaProfesores* listaP){
+	cout << listaP->toString();
 }
 
-string Interfaz::estudiantesRegistrados(){}
-string Interfaz::cursosMatriculadosPorEstudiante(){}
-string Interfaz::profesorEspecifico(){}
-string Interfaz::periodosHabilitadosParaElAnnio(){}
-string Interfaz::informeGrupoEspecifico(){}
+void Interfaz::estudiantesRegistrados(ListaEst* listaE) { 
+	cout << listaE->mostrarEstudiantes();
+}
+
+void Interfaz::cursosMatriculadosPorEstudiante(){  }
+
+void Interfaz::profesorEspecifico(ListaProfesores* listaP){ 
+	string ced;
+	cout << "Digite la cedula del profesor que esta buscando" << endl;
+	cin >> ced;
+	cout << listaP->obtenerProfesor(ced)->toString();
+}
+
+void Interfaz::periodosHabilitadosParaElAnnio(ListaPer* listaP){ 
+	cout << listaP->mostrarPeriodos();
+}
+
+void Interfaz::informeGrupoEspecifico(){  }
+
+
+//---------------GUARDAR-LOS-DATOS-EN-ARCHIVOS-------------
+int Interfaz::guardarDatosArchivos() {
+	int op;
+	system("cls");
+	cout << "---------GUARDAR-LOS-DATOS-EN-ARCHIVOS-------" << endl;
+	cout << "1- Guardar los datos de los profesores" << endl;
+	cout << "2- Guardar Estudiante Registrados" << endl;
+	cout << "3- Guardar Cursos Matriculados por un Estudiante" << endl;
+	cout << "4- Guardar Periodos Habilitados para el Annio" << endl;
+	cout << "5- Guardar grupo Especifico" << endl;
+	cout << "6- Regresar al Menu Principal" << endl;
+	cout << "Ingrese la opcion que desea" << endl;
+	cin >> op;
+	return op;
+}
