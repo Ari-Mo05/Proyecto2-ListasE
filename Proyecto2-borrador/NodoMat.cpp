@@ -31,6 +31,6 @@ void NodoMat::setSiguiente(NodoMat* si)
 
 string NodoMat::mostrarMatricula(){
     stringstream m;
-    m << matri->factura() << endl;
+    m << matri->toString() << endl;
     return m.str();
 }
