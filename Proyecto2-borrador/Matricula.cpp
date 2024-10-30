@@ -37,4 +37,5 @@ string Matricula::factura(){
     s << est->toString();
     s << "Grupo en el que matriculo: " << endl;
     s << grupo->toString();
+    return s.str();
 }
