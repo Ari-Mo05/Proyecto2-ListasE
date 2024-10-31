@@ -16,7 +16,9 @@ bool ListaPer::agregarPeriodo(Periodo& peri) {
 			ppio = new NodoPeri(peri, ppio);				
 			return true;
 		}
-		else {		
+		else {	
+			if (ppio->getSig() == NULL)
+				actual = ppio;
 			while (actual->getSig() != NULL) {
 				actual = actual->getSig();
 			}
