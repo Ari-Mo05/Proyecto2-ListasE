@@ -32,6 +32,17 @@ Grupo* ListaGrupo::obtenerGrupo(int numG){
 	return nullptr;
 }
 
+
+bool ListaGrupo::getGrupoNombre(string nomC) {
+	actual = ppio;
+	while (actual != NULL) {
+		if (actual->getGrupo()->getCurso()->getNombreCurso() == nomC)
+			return true;
+		actual = actual->getSiguiente();
+	}
+	return false;
+}
+
 bool ListaGrupo::existeGrupo(int cod) {
 	actual = ppio;
 	while (actual != nullptr) {
@@ -50,3 +61,4 @@ string ListaGrupo::mostrarGruposEspecifico(string cur) {
 		s << actual->mostrarGrupo() << endl;
 	return s.str();
 }
+
