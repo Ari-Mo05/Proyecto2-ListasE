@@ -1,4 +1,4 @@
-#include"ListaProfesores.h"
+include"ListaProfesores.h"
 
 ListaProfesores::ListaProfesores() {
 	ppio = NULL;
@@ -60,4 +60,3 @@ string ListaProfesores::toString() {
 	}
 	return s.str();
 }
-
