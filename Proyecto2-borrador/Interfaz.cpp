@@ -148,14 +148,21 @@ ListaCurso* Interfaz::ingresaCurso(ListaCurso* listaC){
 	Periodo* peri = NULL;
 	Curso* cur = NULL;
 	ListaPer* listaP = new ListaPer();
+
+
 	cout << "Ingresar el nombre del curso" << endl;
-	cin >> nombreCurso;
+	cin.ignore();
+	getline(cin, nombreCurso);
+
+
 	cout << "Ingrese el codigo del curso" << endl;
 	cin >> idCurso;
 	cout << "Ingrese el precio del curso" << endl;
 	cin >> precioCurso;
 	cout << "Estado del curso: Disponible o noDisponible" << endl;
 	cin >> estado;
+
+
 	cout << "Ingresa el periodo:" << endl;
 	cout << "Periodo 1: De Enero a Marzo" << endl;
 	cout << "Periodo 2: De Abril a Junio" << endl;
@@ -186,7 +193,7 @@ ListaCurso* Interfaz::ingresaCurso(ListaCurso* listaC){
 	}
 	cout << endl;
 	peri = new Periodo(mesInicio, mesCierre);
-	if (listaP->periodoPermitido(*peri)) {
+	if (listaP->existePeriodo(*peri)) {
 		cout << "El periodo es valido" << endl;
 		cur = new Curso(nombreCurso, idCurso, precioCurso, estado, peri);
 		if (listaC->agregarCurso(*cur)) {
@@ -211,21 +218,28 @@ ListaCurso* Interfaz::ingresaCurso(ListaCurso* listaC){
 
 //terminar
 ListaGrupo* Interfaz::ingresaGrupo(ListaCurso* listaCur, ListaProfesores* listaProf, ListaGrupo* listaG){
-	int numGrupo, capacidadAlumnos, cantAlumnos, horaInicio, horaFinal, num;
+	int numGrupo, capacidadAlumnos, horaInicio, horaFinal, num;
 	string codCurso, diaSemana, id;
 	Curso* curso = new Curso();
 	Horario* hor = NULL;
 	Profesor* profe = NULL;
 	Grupo* grupo = NULL;
+
+
 	cout << "Ingrese el numero del grupo" << endl;
 	cin >> numGrupo;
 	cout << "Ingrese la capacidad de alumnos" << endl;
 	cin >> capacidadAlumnos;
-	cout << "Ingrese la cantidad de alumnos" << endl;
-	cin >> cantAlumnos;
-	cout << "Ingrese el codigo del curso" << endl;
+	cout << endl;
+
+	cout << "Los cursos que se ofrecen son: ";
+	cout << listaCur->mostrarCursos() << endl;
+	cout << "Ingrese el codigo del curso que desea para el grupo" << endl;
 	cin >> codCurso;
 	curso = listaCur->obtenerCurso(codCurso);
+	cout << endl;
+
+
 	cout << "Ingrese el horario: " << endl;
 	cout << "Ingrese la hora de inicio" << endl;
 	cin >> horaInicio;
@@ -240,18 +254,29 @@ ListaGrupo* Interfaz::ingresaGrupo(ListaCurso* listaCur, ListaProfesores* listaP
 		hor->agregarDias(diaSemana);
 		num--;
 	}
+	cout << endl;
+
+
+	cout << "Los profesores disponibles son: ";
+	cout << listaProf->mostrarProfesores() << endl;
 	cout << "Ingrese la cedula del profesor" << endl;
 	cin >> id;
 	cout << endl;
 	profe = listaProf->obtenerProfesor(id);
-	grupo = new Grupo(numGrupo, capacidadAlumnos, cantAlumnos, curso, hor, profe);
-	if (listaG->ingresarGrupos(grupo)) {
+
+
+	grupo = new Grupo(numGrupo, capacidadAlumnos, 0, curso, hor, profe);
+	if (listaG->ingresarGrupos(*grupo)) {
 		cout << "El grupo: " << endl;
 		cout << "--------------------------------------" << endl;
 		cout << grupo->toString() << endl;
 		cout << "--------------------------------------" << endl;
 		cout << "Fue ingresado" << endl;
 		Sleep(4000);
+	}
+	else {
+		cout << "El grupo no fue ingresado" << endl;
+		Sleep(10000);
 	}
 	return listaG;
 }
