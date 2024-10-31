@@ -6,7 +6,7 @@ class NodoGrupo {
 		Grupo* grup;
 		NodoGrupo* sig;
 	public:
-		NodoGrupo(Grupo*, NodoGrupo*);
+		NodoGrupo(Grupo&, NodoGrupo*);
 		virtual ~NodoGrupo();
 		Grupo* getGrupo();
 		NodoGrupo* getSiguiente();
