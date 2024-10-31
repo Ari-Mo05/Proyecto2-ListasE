@@ -221,7 +221,7 @@ int Interfaz::subMenuMatricula() {
 	return op;
 }
 
-bool Interfaz::matricularEstudiante(ListaEst* listaE, ListaGrupo* listaG) {
+ListaMatri* Interfaz::matricularEstudiante(ListaEst* listaE, ListaGrupo* listaG) {
 	string ced, curso;
 	int num;
 	Estudiante* estu = new Estudiante();
@@ -249,7 +249,7 @@ bool Interfaz::matricularEstudiante(ListaEst* listaE, ListaGrupo* listaG) {
 		cout << "Ese curso no existe" << endl;
 	}
 	cout << "Ese estudiante no esta ingresado" << endl;
-	return true;
+	return listaM;
 }
 
 //terminar
