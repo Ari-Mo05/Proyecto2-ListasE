@@ -12,66 +12,68 @@ int main() {
 	do {
 		num = Interfaz::menuPrincipal();
 		switch (num) {
+		case 1: {
+			op = Interfaz::subMenuAdministracion();
+			switch (op) {
 			case 1: {
-				op = Interfaz::subMenuAdministracion();
-				switch (op) {
-					case 1: {
-						listaP = Interfaz::ingresaProfesor(listaP, listaE);
-					}break;
-					case 2: {
-						listaE = Interfaz::ingresaEstudiante(listaE);
-					} break;
-					case 3: {
-						listaPer = Interfaz::ingresaPeriodo(listaPer);
-					} break;
-					case 4: {
-						listaC = Interfaz::ingresaCurso();
-					}break;
-					case 5: {
-						listaG = Interfaz::ingresaGrupo(listaC, listaP);
-					}break;
-					case 6: {
-						Interfaz::asignarProfesor(listaP, listaG);
-					}break;
-				}
-			}
-			break;
+				listaP = Interfaz::ingresaProfesor(listaP, listaE);
+			}break;
 			case 2: {
-				op = Interfaz::subMenuMatricula();
-				switch (op) {
-					case 1: {
-						listaM = Interfaz::matricularEstudiante(listaE, listaG);
-					}break;
-					case 2: {
+				listaE = Interfaz::ingresaEstudiante(listaE);
+			} break;
+			case 3: {
+				listaPer = Interfaz::ingresaPeriodo(listaPer);
+			} break;
+			case 4: {
+				listaC = Interfaz::ingresaCurso(listaC);
+			}break;
+			case 5: {
+				listaG = Interfaz::ingresaGrupo(listaC, listaP, listaG);
+			}break;
+			case 6: {
+				Interfaz::asignarProfesor(listaP, listaG);
+			}break;
+			}
+		}
+			  break;
+		case 2: {
+			op = Interfaz::subMenuMatricula();
+			switch (op) {
+			case 1: {
+				listaM = Interfaz::matricularEstudiante(listaE, listaG);
+			}break;
+			case 2: {
 
-					}break;
-				}
+			}break;
+			}
+		}break;
+		case 3: {
+			op = Interfaz::subMenuBusquedaseInformes();
+			switch (op) {
+			case 1: {
+				Interfaz::profesoresRegistrados(listaP);
+			}break;
+			case 2: {
+				Interfaz::estudiantesRegistrados(listaE);
 			}break;
 			case 3: {
-				op = Interfaz::subMenuBusquedaseInformes();
-				switch (op) {
-					case 1: {
-						Interfaz::profesoresRegistrados(listaP);
-					}break;
-					case 2: {
-						Interfaz::estudiantesRegistrados(listaE);
-					}break;
-					case 3: {}break;
-					case 4: {
-						Interfaz::profesorEspecifico(listaP);
-					} break;
-					case 5: {
-						Interfaz::periodosHabilitadosParaElAnnio(listaPer);
-					}break;
-					case 6: {}break;
-				}
-				Sleep(4000);
+				Interfaz::cursosMatriculadosPorEstudiante(listaC);
 			}break;
 			case 4: {
-		
+				Interfaz::profesorEspecifico(listaP);
 			} break;
+			case 5: {
+				Interfaz::periodosHabilitadosParaElAnnio(listaPer);
+			}break;
+			case 6: {}break;
+			}
+			Sleep(4000);
+		}break;
+		case 4: {
+
+		} break;
 		}
-	} while (num!=5);
+	} while (num != 5);
 
 
 
