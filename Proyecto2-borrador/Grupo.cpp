@@ -1,7 +1,9 @@
 #include "Grupo.h"
 
-Grupo::Grupo()
-{
+Grupo::Grupo(){
+    numGrupo = 0;
+    capacidadAlumnos = 0;
+    cantAlumnos = 0;
     curso = nullptr;
     hor = nullptr;
     profe = nullptr;
@@ -22,18 +24,19 @@ Grupo::~Grupo()
         delete profe;
 }
 
-string Grupo::toString()
-{
+string Grupo::toString(){
     stringstream g;
     g << "------INFORMACION DEL GRUPO------" << endl;
     g << "---------------------------------" << endl;
     g << "Numero de Grupo: " << numGrupo << endl;
     g << "Capacidad de Alumnos: " << capacidadAlumnos << endl;
     g << "Cantidad de Alumnos: " << cantAlumnos << endl;
-    g << "Curso: " << curso->toString() << endl;
-    g << "Horario: " << hor->toString() << endl;
-    g << "Profesor: " << profe->toString() << endl;
-
+    g << "Curso: " << endl;
+    g << curso->toString() << endl;
+    g << "Horario: " << endl;
+    g << hor->toString() << endl;
+    g << "Profesor: " << endl;
+    g << profe->toString() << endl;
     return g.str();
 }
 
