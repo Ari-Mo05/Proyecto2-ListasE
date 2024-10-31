@@ -16,6 +16,8 @@ bool ListaEst::ingresaEstudiante(Estudiante& estu){
 		if (ppio == NULL)
 			ppio = new NodoEst(estu, ppio);
 		else {
+			if (ppio->getSiguiente() == NULL)
+				actual = ppio;
 			while (actual->getSiguiente() != NULL)
 				actual = actual->getSiguiente();
 			actual->setSiguiente(new NodoEst(estu, NULL));
