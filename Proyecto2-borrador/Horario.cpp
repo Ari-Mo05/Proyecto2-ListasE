@@ -1,4 +1,4 @@
-include "Horario.h"
+#include "Horario.h"
 
 Horario::Horario(int horaInicio, int horaFinal, int can, int tam)
 {
