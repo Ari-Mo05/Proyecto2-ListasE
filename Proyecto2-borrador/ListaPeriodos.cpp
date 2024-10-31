@@ -10,21 +10,18 @@ ListaPer::~ListaPer(){
 }
 
 bool ListaPer::agregarPeriodo(Periodo& peri) {
-	actual = ppio;
-	if (periodoPermitido(peri) && !existePeriodo(peri))
-		if (ppio == NULL) {
-			ppio = new NodoPeri(peri, ppio);				
-			return true;
-		}
-		else {	
+	if (periodoPermitido(peri) && !existePeriodo(peri)) {
+		if (ppio == NULL) 
+			ppio = new NodoPeri(peri, actual);
+		else {
 			if (ppio->getSig() == NULL)
 				actual = ppio;
-			while (actual->getSig() != NULL) {
+			while (actual->getSig() != NULL)
 				actual = actual->getSig();
-			}
 			actual->setSig(new NodoPeri(peri, NULL));
-			return true;
 		}
+		return true;
+	}
 	return false;
 }
 
@@ -35,7 +32,7 @@ bool ListaPer::vacia(){
 string ListaPer::mostrarPeriodos(){
 	stringstream p;
 	actual = ppio;
-	p << "-----------PERIODOS-----------" << endl;
+	p << "----------------PERIODOS---------------" << endl;
 	while (actual != nullptr) {
 		p << actual->mostrarPeriodo() << endl;
 		actual = actual->getSig();
