@@ -18,7 +18,7 @@ string ListaMatri::mostrarMatricula(){
 }
 
 bool ListaMatri::agregarMatricula(Matricula& matri) {
-	if (!existePersonaGrupo(matri.getEstudiante()->getId(), matri.getGrupo())) {
+	if (!existePersonaGrupo(matri.getEstudiante()->getId(), matri.getGrupo()) && matri.getGrupo()->getCurso()->getEstado() == "Disponible") {
 		if (ppio == NULL) {
 			ppio = new NodoMat(matri, ppio);
 		}
