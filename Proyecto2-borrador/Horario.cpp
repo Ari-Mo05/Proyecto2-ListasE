@@ -37,14 +37,13 @@ int Horario::getHoraFinal() const
     return horaFinal;
 }
 
-string Horario::toString() const
-{
+string Horario::toString() const{
     stringstream h;
     h << "--------HORARIO--------" << endl;
     h << "Hora de inicio: " << horaInicio << endl;
     h << "Hora de finalizacion: " << horaFinal << endl;
-    for(int i = 0; i < 7; i++)
-        h << "Dias de la semana: " << vec[i] << endl;
+    h << "Dias de la semana: ";
+    for(int i = 0; i < can; i++)
+      h << vec[i] << endl;
     return h.str();
 }
-
