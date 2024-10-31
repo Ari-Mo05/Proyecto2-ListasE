@@ -8,7 +8,6 @@ ListaProfesores::~ListaProfesores() {
 	delete ppio;
 	delete pExt;
 }
-
 bool ListaProfesores::agregarProfesor(Profesor& prof, ListaEst* listaE) {
 	pExt = ppio;
 	if (!existeProfesor(prof.getId()) && !listaE->siExisteEstudiante(prof.getId())) {
@@ -23,7 +22,6 @@ bool ListaProfesores::agregarProfesor(Profesor& prof, ListaEst* listaE) {
 	}
 	return false;
 }
-
 string ListaProfesores::mostrarProfesores() {
 	stringstream s;
 	pExt = ppio;
@@ -62,3 +60,4 @@ string ListaProfesores::toString() {
 	}
 	return s.str();
 }
+
