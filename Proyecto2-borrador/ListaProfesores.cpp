@@ -14,6 +14,8 @@ bool ListaProfesores::agregarProfesor(Profesor& prof, ListaEst* listaE) {
 		if (ppio == NULL)
 			ppio = new NodoProfes(prof, ppio);
 		else {
+			if (ppio->getSiguiente() == NULL)
+				pExt = ppio;
 			while (pExt->getSiguiente() != NULL)
 				pExt = pExt->getSiguiente();
 			pExt->setSiguiente(new NodoProfes(prof, NULL));
