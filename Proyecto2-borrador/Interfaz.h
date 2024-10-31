@@ -11,6 +11,7 @@ using namespace std;
 #include"ListaProfesores.h"
 #include"ListaCursos.h"
 #include"ListaGrupos.h"
+#include"ListaMatricula.h"
 
 
 class Interfaz {
@@ -24,7 +25,7 @@ class Interfaz {
 		static ListaGrupo* ingresaGrupo(ListaCurso*, ListaProfesores*);
 		static bool asignarProfesor(ListaProfesores*, ListaGrupo*);
 		static int subMenuMatricula();
-		static bool matricularEstudiante(ListaEst*, ListaGrupo*);
+		static ListaMatri* matricularEstudiante(ListaEst*, ListaGrupo*);
 		static bool desmatricularEstudiante(ListaEst*);
 		static int subMenuBusquedaseInformes();
 		static void profesoresRegistrados(ListaProfesores*);
@@ -36,4 +37,3 @@ class Interfaz {
 		
 		static int guardarDatosArchivos();
 };
-
