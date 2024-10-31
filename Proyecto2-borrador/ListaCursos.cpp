@@ -10,7 +10,29 @@ ListaCurso::~ListaCurso(){
 }
 
 bool ListaCurso::agregarCurso(Curso& cur) {
-	return true;
+	if (!existeCurso(cur.getIdCurso())) {
+		if (ppio == NULL)
+			ppio = new NodoCurso(cur, ppio);
+		else {
+			if (ppio->getSiguiente() == NULL)
+				actual = ppio;
+			while (actual->getSiguiente() != NULL)
+				actual = actual->getSiguiente();
+			actual->setSiguiente(new NodoCurso(cur, NULL));
+		}
+		return true;
+	}
+	return false;
+}
+
+bool ListaCurso::existeCurso(string idC) {
+	actual = ppio;
+	while (actual != NULL) {
+		if (actual->getCurso()->getIdCurso() == idC)
+			return true;
+		actual = actual->getSiguiente();
+	}
+	return false;
 }
 
 string ListaCurso::mostrarCursos(){
@@ -33,3 +55,4 @@ Curso* ListaCurso::obtenerCurso(string idC){
 	}
 	return nullptr;
 }
+
