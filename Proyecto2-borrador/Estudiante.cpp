@@ -77,7 +77,7 @@ int Estudiante::getEdad() const
 string Estudiante::toString() const
 {
     stringstream e;
-    e << "--------INFORMACION DEL ESTUDIANTE--------" << endl;
+    e << "----------INFORMACION DEL ESTUDIANTE---------" << endl;
     e << "Nombre: " << nombre << endl;
     e << "Cedula: " << id << endl;
     e << "Especialidad: " << especialidad << endl;
