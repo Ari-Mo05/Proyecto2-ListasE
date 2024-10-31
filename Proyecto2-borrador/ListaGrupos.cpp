@@ -9,8 +9,20 @@ ListaGrupo::~ListaGrupo(){
 		delete actual;
 }
 
-bool ListaGrupo::ingresarGrupos(Grupo* grup) {
-	return true;
+bool ListaGrupo::ingresarGrupos(Grupo& grup) {
+	if (!existeGrupo(grup.getNumGrupo()) && grup.getCurso()->getEstado() == "Disponible") {
+		if (ppio == NULL)
+			ppio = new NodoGrupo(grup, ppio);
+		else {
+			if (ppio->getSiguiente() == NULL)
+				actual = ppio;
+			while (actual->getSiguiente() != NULL)
+				actual = actual->getSiguiente();
+			actual->setSiguiente(new NodoGrupo(grup, NULL));
+		}
+		return true;
+	}
+	return false;
 }
 
 string ListaGrupo::mostrarGrupos(){
@@ -61,4 +73,3 @@ string ListaGrupo::mostrarGruposEspecifico(string cur) {
 		s << actual->mostrarGrupo() << endl;
 	return s.str();
 }
-
