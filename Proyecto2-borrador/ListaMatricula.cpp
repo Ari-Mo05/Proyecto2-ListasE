@@ -119,7 +119,7 @@ string ListaMatri::factura(string ced) {
 	if (cantidadCursosPeriodo(1, ced) >= 2 || cantidadCursosPeriodo(2, ced) >= 2 || cantidadCursosPeriodo(3, ced) >= 2 || cantidadCursosPeriodo(4, ced) >= 2) {
 		s << "Por 2 o mas cursos en un periodo ";
 		if (cantidadCursosAnual(ced) >= 4)
-			s << " y por4 o mas cursos anuales" << endl;
+			s << " y por 4 o mas cursos anuales" << endl;
 	}
 	else
 		if (cantidadCursosAnual(ced) >= 4)
@@ -130,3 +130,4 @@ string ListaMatri::factura(string ced) {
 	s << "Total: " << calcularSubtotal(ced) + calcularSubtotal(ced) * 0.13 - descuento(ced);
 	return s.str();
 }
+
