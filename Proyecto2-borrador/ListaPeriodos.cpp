@@ -9,13 +9,15 @@ ListaPer::~ListaPer(){
 		delete actual;
 }
 
+//revisar
 bool ListaPer::agregarPeriodo(Periodo& peri) {
 	if (periodoPermitido(peri) && !existePeriodo(peri)) {
 		if (ppio == NULL) 
 			ppio = new NodoPeri(peri, actual);
 		else {
-			if (ppio->getSig() == NULL)
+			if (ppio->getSig() == NULL) {
 				actual = ppio;
+			}
 			while (actual->getSig() != NULL)
 				actual = actual->getSig();
 			actual->setSig(new NodoPeri(peri, NULL));
@@ -67,5 +69,3 @@ bool ListaPer::existePeriodo(Periodo& per) {
 //	case 4: break;	// periodo octubre/diciembre  
 //	}
 //}
-
-
