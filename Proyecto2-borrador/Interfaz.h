@@ -18,7 +18,7 @@ class Interfaz {
 	public:
 		static int menuPrincipal();
 		static int subMenuAdministracion();
-		static ListaProfesores* ingresaProfesor(ListaEst*);
+		static ListaProfesores* ingresaProfesor(ListaProfesores*, ListaEst*);
 		static ListaEst* ingresaEstudiante(ListaEst*);
 		static ListaPer* ingresaPeriodo(ListaPer*);
 		static ListaCurso* ingresaCurso();
