@@ -19,10 +19,10 @@ int main() {
 						listaP = Interfaz::ingresaProfesor(listaE);
 					}break;
 					case 2: {
-						listaE = Interfaz::ingresaEstudiante();
+						listaE = Interfaz::ingresaEstudiante(listaE);
 					} break;
 					case 3: {
-						listaPer = Interfaz::ingresaPeriodo();
+						listaPer = Interfaz::ingresaPeriodo(listaPer);
 					} break;
 					case 4: {
 						listaC = Interfaz::ingresaCurso();
@@ -53,7 +53,9 @@ int main() {
 					case 1: {
 						Interfaz::profesoresRegistrados(listaP);
 					}break;
-					case 2: {}break;
+					case 2: {
+						Interfaz::estudiantesRegistrados(listaE);
+					}break;
 					case 3: {}break;
 					case 4: {
 						Interfaz::profesorEspecifico(listaP);
