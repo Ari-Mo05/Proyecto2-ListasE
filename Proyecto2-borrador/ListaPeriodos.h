@@ -11,8 +11,8 @@ class ListaPer {
 		bool agregarPeriodo(Periodo&);
 		bool vacia();
 		string mostrarPeriodos();
-		bool periodoPermitido(Periodo*);
-		bool existePeriodo(Periodo*);
+		bool periodoPermitido(Periodo&);
+		bool existePeriodo(Periodo&);
 		/*Periodo* obtenerPeriodo(int);*/
 		//...
 };
