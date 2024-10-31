@@ -11,7 +11,6 @@ ListaEst::~ListaEst(){
 }
 
 bool ListaEst::ingresaEstudiante(Estudiante& estu){
-	actual = ppio;
 	if(!siExisteEstudiante(estu.getId())){
 		if (ppio == NULL)
 			ppio = new NodoEst(estu, ppio);
