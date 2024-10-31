@@ -1,13 +1,14 @@
 #include "NodoGrupo.h"
 
-NodoGrupo::NodoGrupo(Grupo* gru, NodoGrupo* si)
+NodoGrupo::NodoGrupo(Grupo& gru, NodoGrupo* si)
 {
-    grup = gru;
+    grup = (Grupo*)&gru;
     sig = si;
 }
 
-NodoGrupo::~NodoGrupo()
-{
+NodoGrupo::~NodoGrupo(){
+    if (sig != NULL)
+        delete sig;
 }
 
 Grupo* NodoGrupo::getGrupo()
