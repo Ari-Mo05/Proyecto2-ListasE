@@ -28,8 +28,10 @@ bool ListaEst::ingresaEstudiante(Estudiante& estu){
 string ListaEst::mostrarEstudiantes(){
 	stringstream e;
 	actual = ppio;
-	while (actual != nullptr)
+	while (actual != nullptr) {
 		e << actual->mostrarEstudiante() << endl;
+		actual = actual->getSiguiente();
+	}
 	return e.str();
 }
 
