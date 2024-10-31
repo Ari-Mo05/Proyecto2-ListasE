@@ -9,6 +9,7 @@ class ListaCurso {
 		ListaCurso();
 		virtual ~ListaCurso();
 		bool agregarCurso(Curso&);
+		bool existeCurso(string);
 		string mostrarCursos();
 		Curso* obtenerCurso(string);
 		//...
