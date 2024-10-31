@@ -130,4 +130,3 @@ string ListaMatri::factura(string ced) {
 	s << "Total: " << calcularSubtotal(ced) + calcularSubtotal(ced) * 0.13 - descuento(ced);
 	return s.str();
 }
-
