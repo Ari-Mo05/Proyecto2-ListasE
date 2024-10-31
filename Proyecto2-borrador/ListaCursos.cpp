@@ -45,6 +45,16 @@ string ListaCurso::mostrarCursos(){
 	return s.str();
 }
 
+//string ListaCurso::mostrarCursosPeriodo(Periodo* peri) {
+//	stringstream s;
+//	actual = ppio;
+//	while (actual != NULL && actual->getCurso()->getPeriodo() == peri) {
+//		s << actual->mostrarCurso() << endl;
+//		actual = actual->getSiguiente();
+//	}
+//	return s.str();
+//}
+
 Curso* ListaCurso::obtenerCurso(string idC){
 	actual = ppio;
 	while (actual != nullptr) {
