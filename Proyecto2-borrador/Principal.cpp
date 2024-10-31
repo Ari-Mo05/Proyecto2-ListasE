@@ -7,6 +7,7 @@ int main() {
 	ListaPer* listaPer = new ListaPer();
 	ListaCurso* listaC = new ListaCurso();
 	ListaGrupo* listaG = new ListaGrupo();
+	ListaMatri* listaM = new ListaMatri();
 
 	do {
 		num = Interfaz::menuPrincipal();
@@ -39,7 +40,7 @@ int main() {
 				op = Interfaz::subMenuMatricula();
 				switch (op) {
 					case 1: {
-
+						listaM = Interfaz::matricularEstudiante(listaE, listaG);
 					}break;
 					case 2: {
 
