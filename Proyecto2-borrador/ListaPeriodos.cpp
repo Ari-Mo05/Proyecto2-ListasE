@@ -65,4 +65,3 @@ bool ListaPer::existePeriodo(Periodo* per) {
 //	case 4: break;	// periodo octubre/diciembre  
 //	}
 //}
-
