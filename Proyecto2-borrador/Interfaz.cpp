@@ -52,9 +52,9 @@ ListaProfesores* Interfaz::ingresaProfesor(ListaEst* listaE) {
 	prof = new Profesor(nombre, id, numTelefono, email, gradoAcademico);
 	if (listaP->agregarProfesor(*prof, listaE)) {
 		cout << "El profesor: " << endl;
-		cout << "--------------------------------------" << endl;
+		cout << "----------------------------------------" << endl;
 		cout << prof->toString() << endl;
-		cout << "--------------------------------------" << endl;
+		cout << "----------------------------------------" << endl;
 		cout << "Fue ingresado" << endl;
 		Sleep(4000);
 	}
@@ -82,30 +82,59 @@ ListaEst* Interfaz::ingresaEstudiante() {
 	estu = new Estudiante(nombre, id, espe, numeroTel, email, edad);
 	if (listaE->ingresaEstudiante(*estu)) {
 		cout << "El estudiante: " << endl;
-		cout << "--------------------------------------" << endl;
+		cout << "---------------------------------------------" << endl;
 		cout << estu->toString() << endl;
-		cout << "--------------------------------------" << endl;
+		cout << "---------------------------------------------" << endl;
 		cout << "Fue ingresado" << endl;
 		Sleep(4000);
 	}
 	return listaE;
 }
 ListaPer* Interfaz::ingresaPeriodo(){
+	int num;
 	string mesInicio, mesCierre;
 	Periodo* peri = NULL;
 	ListaPer* listaP = new ListaPer();
-	cout << "Ingrese el mes de inicio del periodo" << endl;
-	cin >> mesInicio;
-	cout << "Ingres el mes de cierre del periodo" << endl;
-	cin >> mesCierre;
+	cout << "Ingrese que periodo desea: " << endl;
+	cout << "Periodo 1: De Enero a Marzo" << endl;
+	cout << "Periodo 2: De Abril a Junio" << endl;
+	cout << "Periodo 3: De Julio a Septiembre" << endl;
+	cout << "Periodo 4: De Octubre a Diciembre" << endl;
+	cin >> num;
+	switch (num) {
+		case 1: {
+			mesInicio = "Enero";
+			mesCierre = "Marzo";
+		}
+		break;
+		case 2: {
+			mesInicio = "Abril";
+			mesCierre = "Junio";
+		}
+		break;
+		case 3: {
+			mesInicio = "Julio";
+			mesCierre = "Septiembre";
+		}
+		break;
+		case 4: {
+			mesInicio = "Octubre";
+			mesCierre = "Diciembre";
+		}
+		break;
+	}
 	cout << endl;
 	peri = new Periodo(mesInicio, mesCierre);
 	if (listaP->agregarPeriodo(*peri)) {
 		cout << "El periodo: " << endl;
-		cout << "----------------------------" << endl;
+		cout << "---------------------------------------" << endl;
 		cout << peri->toString();
-		cout << "-----------------------------" << endl;
+		cout << "---------------------------------------" << endl;
 		cout << "Fue ingresado" << endl;
+		Sleep(4000);
+	}
+	else {
+		cout << "No se puedo ingresar el periodo" << endl;
 		Sleep(4000);
 	}
 	return listaP;
@@ -114,6 +143,7 @@ ListaPer* Interfaz::ingresaPeriodo(){
 ListaCurso* Interfaz::ingresaCurso(){
 	string nombreCurso, idCurso, estado, mesInicio, mesCierre;
 	double precioCurso;
+	int num;
 	Periodo* peri = NULL;
 	Curso* cur = NULL;
 	ListaCurso* listaC = new ListaCurso();
@@ -127,20 +157,43 @@ ListaCurso* Interfaz::ingresaCurso(){
 	cout << "Estado del curso: Disponible o noDisponible" << endl;
 	cin >> estado;
 	cout << "Ingresa el periodo:" << endl;
-	cout << "Ingrese el mes de inicio del periodo" << endl;
-	cin >> mesInicio;
-	cout << "Ingrese el mes de cierre del periodo" << endl;
-	cin >> mesCierre;
+	cout << "Periodo 1: De Enero a Marzo" << endl;
+	cout << "Periodo 2: De Abril a Junio" << endl;
+	cout << "Periodo 3: De Julio a Septiembre" << endl;
+	cout << "Periodo 4: De Octubre a Diciembre" << endl;
+	cin >> num;
+	switch (num) {
+	case 1: {
+		mesInicio = "Enero";
+		mesCierre = "Marzo";
+	}
+		  break;
+	case 2: {
+		mesInicio = "Abril";
+		mesCierre = "Junio";
+	}
+		  break;
+	case 3: {
+		mesInicio = "Julio";
+		mesCierre = "Septiembre";
+	}
+		  break;
+	case 4: {
+		mesInicio = "Octubre";
+		mesCierre = "Diciembre";
+	}
+		  break;
+	}
 	cout << endl;
 	peri = new Periodo(mesInicio, mesCierre);
-	if (listaP->periodoPermitido(peri)) {
-		cout << "El periodo es valido";
+	if (listaP->periodoPermitido(*peri)) {
+		cout << "El periodo es valido" << endl;
 		cur = new Curso(nombreCurso, idCurso, precioCurso, estado, peri);
 		if (listaC->agregarCurso(*cur)) {
 			cout << "El curso: " << endl;
-			cout << "--------------------------------------" << endl;
+			cout << "---------------------------------" << endl;
 			cout << cur->toString() << endl;
-			cout << "--------------------------------------" << endl;
+			cout << "---------------------------------" << endl;
 			cout << "Fue ingresado" << endl;
 			Sleep(4000);
 		}
@@ -151,8 +204,9 @@ ListaCurso* Interfaz::ingresaCurso(){
 	return listaC;
 }
 
+//revisar
 ListaGrupo* Interfaz::ingresaGrupo(ListaCurso* listaCur, ListaProfesores* listaProf){
-	int numGrupo, capacidadAlumnos, cantAlumnos, horaInicio, horaFinal;
+	int numGrupo, capacidadAlumnos, cantAlumnos, horaInicio, horaFinal, num;
 	string codCurso, diaSemana, id;
 	Curso* curso = new Curso();
 	Horario* hor = NULL;
@@ -173,9 +227,15 @@ ListaGrupo* Interfaz::ingresaGrupo(ListaCurso* listaCur, ListaProfesores* listaP
 	cin >> horaInicio;
 	cout << "Ingrese la hora a la que finaliza la clase" << endl;
 	cin >> horaFinal;
-	cout << "Que dia de la semana?" << endl;
-	cin >> diaSemana;
-	hor = new Horario(horaInicio, horaFinal, diaSemana);
+	hor = new Horario(horaInicio, horaFinal, 0, 7);
+	cout << "Cuantos dias de la semana se da el curso?" << endl;
+	cin >> num;
+	while (num != 0) {
+		cout << "Que dia de la semana?" << endl;
+		cin >> diaSemana;
+		hor->agregarDias(diaSemana);
+		num--;
+	}
 	cout << "Ingrese la cedula del profesor" << endl;
 	cin >> id;
 	cout << endl;
