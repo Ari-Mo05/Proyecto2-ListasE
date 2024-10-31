@@ -9,7 +9,7 @@ Periodo::~Periodo(){
 
 string Periodo::toString(){
     stringstream s;
-    s << "------INFORMACION-DE-LOS-PERIODOS------" << endl;
+    s << "--------INFORMACION-DEL-PERIODO--------" << endl;
     s << "Mes de Inicio del ciclo: " << mesDeInicio << endl;
     s << "Mes de Cierre del ciclo: " << mesDeCierre << endl;
     return s.str();
