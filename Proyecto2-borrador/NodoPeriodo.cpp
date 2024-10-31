@@ -28,10 +28,11 @@ void NodoPeri::setPeriodo(Periodo* per)
     peri = per;
 }
 
-string NodoPeri::mostrarPeriodo()
-{
+string NodoPeri::mostrarPeriodo(){
     stringstream p;
     p << peri->toString() << endl;
     return p.str();
 }
+
+
 
