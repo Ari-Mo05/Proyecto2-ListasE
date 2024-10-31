@@ -18,7 +18,28 @@ string ListaMatri::mostrarMatricula(){
 }
 
 bool ListaMatri::agregarMatricula(Matricula& matri) {
-	return true;
+	if (!existePersonaGrupo(matri.getEstudiante()->getId(), matri.getGrupo())) {
+		if (ppio == NULL) {
+			ppio = new NodoMat(matri, ppio);
+		}
+		else {
+			while (actual->getSiguiente() != NULL)
+				actual = actual->getSiguiente();
+			actual->setSiguiente(new NodoMat(matri, NULL));
+		}
+		return true;
+	}
+	return false;
+}
+
+bool ListaMatri::existePersonaGrupo(string ced, Grupo* grup) {
+	actual = ppio; 
+	while (actual != NULL) {
+		if (actual->getMatricula()->getGrupo() == grup && actual->getMatricula()->getEstudiante()->getId() == ced)
+			return true;
+		actual = actual->getSiguiente();
+	}
+	return false;
 }
 
 double ListaMatri::calcularSubtotal(string ced) {
