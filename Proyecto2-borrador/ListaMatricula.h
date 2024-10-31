@@ -10,6 +10,7 @@ class ListaMatri {
 		virtual ~ListaMatri();
 		string mostrarMatricula();
 		bool agregarMatricula(Matricula&);
+		bool existePersonaGrupo(string, Grupo*);
 		double calcularSubtotal(string);
 		int cantidadCursosPeriodo(int, string);
 		int cantidadCursosAnual(string);
