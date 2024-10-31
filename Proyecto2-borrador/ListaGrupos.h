@@ -12,6 +12,8 @@ class ListaGrupo {
 		string mostrarGrupos();
 		string mostrarGruposEspecifico(string);
 		Grupo* obtenerGrupo(int);
+		bool getGrupoNombre(string);
 		bool existeGrupo(int);
 		//...
 	};
+
