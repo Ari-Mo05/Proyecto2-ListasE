@@ -33,11 +33,10 @@ int Interfaz::subMenuAdministracion() {
 	return op;
 }
 
-ListaProfesores* Interfaz::ingresaProfesor(ListaEst* listaE) {
+ListaProfesores* Interfaz::ingresaProfesor(ListaProfesores* listaP, ListaEst* listaE) {
 	string nombre, id, email, gradoAcademico;
 	int numTelefono;
 	Profesor* prof = NULL;
-	ListaProfesores* listaP = new ListaProfesores();
 	cout << "Ingresa el nombre del profesor" << endl;
 	cin >> nombre;
 	cout << "Ingresa la cedula del profesor" << endl;
@@ -56,6 +55,10 @@ ListaProfesores* Interfaz::ingresaProfesor(ListaEst* listaE) {
 		cout << prof->toString() << endl;
 		cout << "----------------------------------------" << endl;
 		cout << "Fue ingresado" << endl;
+		Sleep(4000);
+	}
+	else {
+		cout << "No se pudo ingresar el profesor" << endl;
 		Sleep(4000);
 	}
 	return listaP;
@@ -138,6 +141,7 @@ ListaPer* Interfaz::ingresaPeriodo(ListaPer* listaP){
 	return listaP;
 }
 
+//terminar
 ListaCurso* Interfaz::ingresaCurso(){
 	string nombreCurso, idCurso, estado, mesInicio, mesCierre;
 	double precioCurso;
@@ -202,7 +206,7 @@ ListaCurso* Interfaz::ingresaCurso(){
 	return listaC;
 }
 
-//revisar
+//terminar
 ListaGrupo* Interfaz::ingresaGrupo(ListaCurso* listaCur, ListaProfesores* listaProf){
 	int numGrupo, capacidadAlumnos, cantAlumnos, horaInicio, horaFinal, num;
 	string codCurso, diaSemana, id;
