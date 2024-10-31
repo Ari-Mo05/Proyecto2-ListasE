@@ -1,4 +1,4 @@
-include"ListaProfesores.h"
+#include"ListaProfesores.h"
 
 ListaProfesores::ListaProfesores() {
 	ppio = NULL;
