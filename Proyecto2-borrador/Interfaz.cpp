@@ -221,20 +221,34 @@ int Interfaz::subMenuMatricula() {
 	return op;
 }
 
-//terminar
 bool Interfaz::matricularEstudiante(ListaEst* listaE, ListaGrupo* listaG) {
 	string ced, curso;
 	int num;
+	Estudiante* estu = new Estudiante();
+	Grupo* grup = new Grupo();
+	Matricula* matri = NULL;
+	ListaMatri* listaM = new ListaMatri();
 	cout << "Digite la cedula del estudiante" << endl;
 	cin >> ced;
 	if (listaE->siExisteEstudiante(ced)) {
+		estu = listaE->obtenerEstudiante(ced);
 		cout << "Que curso desea matricular?" << endl;
 		cin >> curso;
-		cout << "Los grupos con ese curso son los siguientes: " << endl;
-		cout << listaG->mostrarGruposEspecifico(curso) << endl;
-		cout << "Ingrese el numero de grupo en el que desea matricular" << endl;
-		cin >> num;
+		if (listaG->getGrupoNombre(curso)) {
+			cout << "Los grupos con ese curso son los siguientes: " << endl;
+			cout << listaG->mostrarGruposEspecifico(curso) << endl;
+			cout << "Ingrese el numero de grupo en el que desea matricular" << endl;
+			cin >> num;
+			grup = listaG->obtenerGrupo(num);
+			matri = new Matricula(grup, estu);
+			if (listaM->agregarMatricula(*matri))
+				cout << "Matricula generada" << endl;
+			else
+				cout << "No se pudo ingresar la matricula" << endl;
+		}
+		cout << "Ese curso no existe" << endl;
 	}
+	cout << "Ese estudiante no esta ingresado" << endl;
 	return true;
 }
 
