@@ -1,5 +1,6 @@
 #pragma once
 #include"NodoProfes.h"
+#include"ListaEstudiantes.h"
 
 class ListaProfesores {
 	private:
