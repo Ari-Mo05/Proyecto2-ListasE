@@ -382,3 +382,4 @@ int Interfaz::guardarDatosArchivos() {
 	cin >> op;
 	return op;
 }
+
