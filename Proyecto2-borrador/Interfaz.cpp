@@ -141,14 +141,12 @@ ListaPer* Interfaz::ingresaPeriodo(ListaPer* listaP){
 	return listaP;
 }
 
-//terminar
-ListaCurso* Interfaz::ingresaCurso(){
+ListaCurso* Interfaz::ingresaCurso(ListaCurso* listaC){
 	string nombreCurso, idCurso, estado, mesInicio, mesCierre;
 	double precioCurso;
 	int num;
 	Periodo* peri = NULL;
 	Curso* cur = NULL;
-	ListaCurso* listaC = new ListaCurso();
 	ListaPer* listaP = new ListaPer();
 	cout << "Ingresar el nombre del curso" << endl;
 	cin >> nombreCurso;
@@ -193,28 +191,32 @@ ListaCurso* Interfaz::ingresaCurso(){
 		cur = new Curso(nombreCurso, idCurso, precioCurso, estado, peri);
 		if (listaC->agregarCurso(*cur)) {
 			cout << "El curso: " << endl;
-			cout << "---------------------------------" << endl;
+			cout << "--------------------------------------" << endl;
 			cout << cur->toString() << endl;
-			cout << "---------------------------------" << endl;
+			cout << "--------------------------------------" << endl;
 			cout << "Fue ingresado" << endl;
 			Sleep(4000);
 		}
+		else {
+			cout << "No se pudo ingresar el curso" << endl;
+			Sleep(4000);
+		}
 	}
-	else
+	else {
 		cout << "El periodo no es valido";
-
+		Sleep(4000);
+	}
 	return listaC;
 }
 
 //terminar
-ListaGrupo* Interfaz::ingresaGrupo(ListaCurso* listaCur, ListaProfesores* listaProf){
+ListaGrupo* Interfaz::ingresaGrupo(ListaCurso* listaCur, ListaProfesores* listaProf, ListaGrupo* listaG){
 	int numGrupo, capacidadAlumnos, cantAlumnos, horaInicio, horaFinal, num;
 	string codCurso, diaSemana, id;
 	Curso* curso = new Curso();
 	Horario* hor = NULL;
 	Profesor* profe = NULL;
 	Grupo* grupo = NULL;
-	ListaGrupo* listaG = new ListaGrupo();
 	cout << "Ingrese el numero del grupo" << endl;
 	cin >> numGrupo;
 	cout << "Ingrese la capacidad de alumnos" << endl;
@@ -351,7 +353,9 @@ void Interfaz::estudiantesRegistrados(ListaEst* listaE) {
 	cout << listaE->mostrarEstudiantes();
 }
 
-void Interfaz::cursosMatriculadosPorEstudiante(){  }
+void Interfaz::cursosMatriculadosPorEstudiante(ListaCurso* listaC){ //cursos totales prueba
+	cout << listaC->mostrarCursos();
+}
 
 void Interfaz::profesorEspecifico(ListaProfesores* listaP){ 
 	string ced;
@@ -382,4 +386,5 @@ int Interfaz::guardarDatosArchivos() {
 	cin >> op;
 	return op;
 }
+
 
