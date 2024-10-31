@@ -8,12 +8,13 @@ class ListaGrupo {
 	public:
 		ListaGrupo();
 		virtual ~ListaGrupo();
-		bool ingresarGrupos(Grupo*);
+		bool ingresarGrupos(Grupo&);
+		bool existeGrupo(int);
 		string mostrarGrupos();
 		string mostrarGruposEspecifico(string);
 		Grupo* obtenerGrupo(int);
 		bool getGrupoNombre(string);
-		bool existeGrupo(int);
 		//...
 	};
+
 
