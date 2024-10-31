@@ -11,6 +11,7 @@ class ListaCurso {
 		bool agregarCurso(Curso&);
 		bool existeCurso(string);
 		string mostrarCursos();
+		//string mostrarCursosPeriodo(Periodo*);
 		Curso* obtenerCurso(string);
 		//...
 };
