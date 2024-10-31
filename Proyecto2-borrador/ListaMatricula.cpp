@@ -17,43 +17,95 @@ string ListaMatri::mostrarMatricula(){
 	return m.str();
 }
 
-string ListaMatri::factura(string ced) {
-	stringstream s;
-	double subtotal = 0, total = 0;
-	int p1 = 0, p2 = 0, p3 = 0, p4 = 0, curso = 0;
+bool ListaMatri::agregarMatricula(Matricula& matri) {
+	return true;
+}
+
+double ListaMatri::calcularSubtotal(string ced) {
+	double subtotal = 0;
 	actual = ppio;
-	s << "El estudiante con cedula " << ced << " matriculo en los siguientes grupos: " << endl;
+	while (actual != NULL) {
+		if (actual->getMatricula()->getEstudiante()->getId() == ced) 
+			subtotal += actual->getMatricula()->getGrupo()->getCurso()->getPrecioCurso();
+		actual = actual->getSiguiente();
+	}
+	return subtotal;
+}
+
+int ListaMatri::cantidadCursosPeriodo(int period, string ced) {
+	int cursos = 0;
+	string mesInicio;
+	switch (period) {
+		case 1: {
+			mesInicio = "Enero";
+		} break;
+		case 2: {
+			mesInicio = "Abril";
+		} break;
+		case 3: {
+			mesInicio = "Julio";
+		} break;
+		case 4: {
+			mesInicio = "Octubre";
+		} break;
+	}
+	while (actual != NULL) {
+		if (actual->getMatricula()->getEstudiante()->getId() == ced && actual->getMatricula()->getGrupo()->getCurso()->getPeriodo()->getMesInicio() == mesInicio)
+			cursos++;
+		actual = actual->getSiguiente();
+	}
+	return cursos;
+}
+
+double ListaMatri::descuento(string ced) {
+	double desc = 0;
+	if (cantidadCursosPeriodo(1, ced) >= 2 || cantidadCursosPeriodo(2, ced) >= 2 || cantidadCursosPeriodo(3, ced) >= 2 || cantidadCursosPeriodo(4, ced) >= 2) {
+		desc = calcularSubtotal(ced) * 0.15;
+		if (cantidadCursosAnual(ced) >= 4)
+			desc += calcularSubtotal(ced) * 0.25;
+	}
+	else
+		if (cantidadCursosAnual(ced) >= 4) 
+			desc = calcularSubtotal(ced) * 0.25;
+	return desc;
+}
+
+int ListaMatri::cantidadCursosAnual(string ced) {
+	int cursos = 0;
+	actual = ppio;
 	while (actual != NULL) {
 		if (actual->getMatricula()->getEstudiante()->getId() == ced) {
-			s << actual->mostrarMatricula();
-			subtotal += actual->getMatricula()->getGrupo()->getCurso()->getPrecioCurso();
-			if (actual->getMatricula()->getGrupo()->getCurso()->getPeriodo()->getMesInicio() == "Enero")
-				p1++;
-			if (actual->getMatricula()->getGrupo()->getCurso()->getPeriodo()->getMesInicio() == "Abril")
-				p2++;
-			if (actual->getMatricula()->getGrupo()->getCurso()->getPeriodo()->getMesInicio() == "Julio")
-				p3++;
-			if (actual->getMatricula()->getGrupo()->getCurso()->getPeriodo()->getMesInicio() == "Octubre")
-				p4++;
-			curso++;
+			cursos++;
 		}
 		actual = actual->getSiguiente();
 	}
-	s << "------------FACTURA-------------" << endl;
-	s << "Subtotal: " << subtotal << endl;
-	s << "IVA: " << subtotal * 0.13 << endl;
-	if (curso >= 4) {
-		s << "Descuento a aplicar: 4 o mas de cuatro cursos por annio" << endl;
-		total = subtotal - subtotal * 0.25;
-		if (p1 >= 2 || p2 >= 2 || p3 >= 2 || p4 >= 2) {
-			s << "Descuento a aplicar: 2 o mas de dos cursos por periodo" << endl;
-			total = total - total * 0.15;
-		}
+	return cursos;
+}
+
+string ListaMatri::factura(string ced) {
+	stringstream s;
+	actual = ppio;
+	s << "El estudiante con cedula " << ced << " matriculo en los siguientes grupos: " << endl;
+	while (actual != NULL) {
+		if (actual->getMatricula()->getEstudiante()->getId() == ced)
+			s << actual->getMatricula()->getGrupo()->getCurso();
+		actual = actual->getSiguiente();
+	}
+	s << "-----------------------FACTURA---------------------" << endl;
+	s<<"Por la cantidad de "<<cantidadCursosAnual(ced)<<" el subtotal es: " << calcularSubtotal(ced) << endl;
+	s << "IVA: " << calcularSubtotal(ced) * 0.13 << endl;
+	s << "Tipo de descuento aplicado : ";
+	if (cantidadCursosPeriodo(1, ced) >= 2 || cantidadCursosPeriodo(2, ced) >= 2 || cantidadCursosPeriodo(3, ced) >= 2 || cantidadCursosPeriodo(4, ced) >= 2) {
+		s << "Por 2 o mas cursos en un periodo ";
+		if (cantidadCursosAnual(ced) >= 4)
+			s << " y por4 o mas cursos anuales" << endl;
 	}
 	else
-		if (p1 >= 2 || p2 >= 2 || p3 >= 2 || p4 >= 2)
-			total = subtotal - subtotal * 0.15;
+		if (cantidadCursosAnual(ced) >= 4)
+			s << "Por 4 o mas cursos anuales" << endl;
 		else
-			total = subtotal;
-	s << "Monto a pagar: " << total + subtotal * 0.13;
+			s << "No recibe descuento" << endl;
+	s << "Descuento: " << descuento(ced) << endl;
+	s << "Total: " << calcularSubtotal(ced) + calcularSubtotal(ced) * 0.13 - descuento(ced);
+	return s.str();
 }
