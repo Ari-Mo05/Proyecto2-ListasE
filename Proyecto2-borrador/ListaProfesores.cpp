@@ -9,10 +9,9 @@ ListaProfesores::~ListaProfesores() {
 	delete pExt;
 }
 bool ListaProfesores::agregarProfesor(Profesor& prof, ListaEst* listaE) {
-	pExt = ppio;
 	if (!existeProfesor(prof.getId()) && !listaE->siExisteEstudiante(prof.getId())) {
 		if (ppio == NULL)
-			ppio = new NodoProfes(prof, ppio);
+			ppio = new NodoProfes(prof, pExt);
 		else {
 			if (ppio->getSiguiente() == NULL)
 				pExt = ppio;
