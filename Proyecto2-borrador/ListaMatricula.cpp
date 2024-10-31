@@ -23,6 +23,8 @@ bool ListaMatri::agregarMatricula(Matricula& matri) {
 			ppio = new NodoMat(matri, ppio);
 		}
 		else {
+			if (ppio->getSiguiente() == NULL)
+				actual = ppio;
 			while (actual->getSiguiente() != NULL)
 				actual = actual->getSiguiente();
 			actual->setSiguiente(new NodoMat(matri, NULL));
