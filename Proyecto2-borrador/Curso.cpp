@@ -19,13 +19,14 @@ Curso::~Curso()
 string Curso::toString()
 {
     stringstream c;
-    c << "------INFORMACION DEL CURSO------" << endl;
-    c << "---------------------------------" << endl;
+    c << "-----------INFORMACION DEL CURSO---------" << endl;
+    c << "-----------------------------------------" << endl;
     c << "Nombre del Curso: " << nombreCurso << endl;
     c << "Id del Curso: " << idCurso << endl;
     c << "Precio del Curso: " << precioCurso << endl;
     c << "Estado (disponible, no disponible): " << estado << endl;
-    c << "Periodo: " << peri->toString() << endl;
+    c << "Periodo: " << endl;
+    c << peri->toString() << endl;
 
     return c.str();
 }
