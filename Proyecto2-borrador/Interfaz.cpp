@@ -61,11 +61,10 @@ ListaProfesores* Interfaz::ingresaProfesor(ListaEst* listaE) {
 	return listaP;
 }
 
-ListaEst* Interfaz::ingresaEstudiante() {
+ListaEst* Interfaz::ingresaEstudiante(ListaEst* listaE) {
 	string nombre, id, espe, email;
 	int numeroTel, edad;
 	Estudiante* estu = NULL;
-	ListaEst* listaE = new ListaEst();
 	cout << "Ingrese el nombre del estudiante" << endl;
 	cin >> nombre;
 	cout << "Ingrese la cedula del estudiante" << endl;
@@ -83,18 +82,17 @@ ListaEst* Interfaz::ingresaEstudiante() {
 	if (listaE->ingresaEstudiante(*estu)) {
 		cout << "El estudiante: " << endl;
 		cout << "---------------------------------------------" << endl;
-		cout << estu->toString() << endl;
+		cout << estu->toString();
 		cout << "---------------------------------------------" << endl;
 		cout << "Fue ingresado" << endl;
 		Sleep(4000);
 	}
 	return listaE;
 }
-ListaPer* Interfaz::ingresaPeriodo(){
+ListaPer* Interfaz::ingresaPeriodo(ListaPer* listaP){
 	int num;
 	string mesInicio, mesCierre;
 	Periodo* peri = NULL;
-	ListaPer* listaP = new ListaPer();
 	cout << "Ingrese que periodo desea: " << endl;
 	cout << "Periodo 1: De Enero a Marzo" << endl;
 	cout << "Periodo 2: De Abril a Junio" << endl;
