@@ -23,6 +23,7 @@ bool ListaProfesores::agregarProfesor(Profesor& prof, ListaEst* listaE) {
 	}
 	return false;
 }
+
 string ListaProfesores::mostrarProfesores() {
 	stringstream s;
 	pExt = ppio;
@@ -32,6 +33,18 @@ string ListaProfesores::mostrarProfesores() {
 	}
 	return s.str();
 }
+
+string ListaProfesores::mostrarProfesoresSinEspecifico(string ced) {
+	stringstream s;
+	pExt = ppio;
+	while (pExt != NULL) {
+		if (pExt->getProfe()->getId() != ced)
+			s << mostrarProfesores() << endl;
+		pExt = pExt->getSiguiente();
+	}
+	return s.str();
+}
+
 Profesor* ListaProfesores::obtenerProfesor(string ced) {
 	pExt = ppio;
 	while (pExt != NULL) {
