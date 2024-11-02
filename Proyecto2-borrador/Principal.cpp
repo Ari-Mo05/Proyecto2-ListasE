@@ -25,7 +25,7 @@ int main() {
 				listaPer = Interfaz::ingresaPeriodo(listaPer);
 			} break;
 			case 4: {
-				listaC = Interfaz::ingresaCurso(listaC);
+				listaC = Interfaz::ingresaCurso(listaC, listaPer);
 			}break;
 			case 5: {
 				listaG = Interfaz::ingresaGrupo(listaC, listaP, listaG);
@@ -80,3 +80,4 @@ int main() {
 	system("pause");
 	return 0;
 }
+
