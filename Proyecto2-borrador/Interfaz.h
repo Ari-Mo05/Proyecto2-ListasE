@@ -21,7 +21,7 @@ class Interfaz {
 		static ListaProfesores* ingresaProfesor(ListaProfesores*, ListaEst*);
 		static ListaEst* ingresaEstudiante(ListaEst*);
 		static ListaPer* ingresaPeriodo(ListaPer*);
-		static ListaCurso* ingresaCurso(ListaCurso*);
+		static ListaCurso* ingresaCurso(ListaCurso*, ListaPer*);
 		static ListaGrupo* ingresaGrupo(ListaCurso*, ListaProfesores*, ListaGrupo*);
 		static bool asignarProfesor(ListaProfesores*, ListaGrupo*);
 		static int subMenuMatricula();
