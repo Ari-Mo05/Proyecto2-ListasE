@@ -26,6 +26,7 @@ string Curso::toString()
     c << "Precio del Curso: " << precioCurso << endl;
     c << "Estado (disponible, no disponible): " << estado << endl;
     c << "Periodo: " << endl;
+    c << "-----------------------------------------" << endl;
     c << peri->toString() << endl;
 
     return c.str();
@@ -80,3 +81,4 @@ void Curso::setPeriodo(Periodo* per)
 {
     peri = per;
 }
+
