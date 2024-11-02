@@ -271,7 +271,7 @@ ListaGrupo* Interfaz::ingresaGrupo(ListaCurso* listaCur, ListaProfesores* listaP
 	}
 	else {
 		cout << "El grupo no fue ingresado" << endl;
-		Sleep(15000);
+		Sleep(4000);
 	}
 	return listaG;
 }
@@ -280,15 +280,20 @@ bool Interfaz::asignarProfesor(ListaProfesores* listaP, ListaGrupo* listaG){
 	int numG;
 	string id;
 	Profesor* prof = new Profesor();
-	cout << "Ingrese la cedula del profesor" << endl;
-	cin >> id;
-	if (listaP->existeProfesor(id))
-		prof = listaP->obtenerProfesor(id);
+	cout << listaG->mostrarGrupos();
 	cout << "Ingrese el numero del grupo" << endl;
 	cin >> numG;
 	if (listaG->existeGrupo(numG)) {
-		listaG->obtenerGrupo(numG)->setProfesor(prof);
-		return true;
+		cout << "Los profesores disponibles son: " << endl;
+		cout << listaP->mostrarProfesoresSinEspecifico(listaG->obtenerGrupo(numG)->getProfesor()->getId());
+		cout << "Ingrese la cedula del profesor" << endl;
+		cin >> id;
+		if (listaP->existeProfesor(id)) {
+			prof = listaP->obtenerProfesor(id);
+			listaG->obtenerGrupo(numG)->setProfesor(prof);
+			cout << listaG->mostrarGrupoEspecifico(numG);
+			return true;
+		}
 	}
 	return false;
 }
