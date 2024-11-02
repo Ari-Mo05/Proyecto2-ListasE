@@ -73,3 +73,11 @@ string ListaGrupo::mostrarGruposEspecifico(string cur) {
 		s << actual->mostrarGrupo() << endl;
 	return s.str();
 }
+
+string ListaGrupo::mostrarGrupoEspecifico(int numG) {
+	stringstream s;
+	actual = ppio;
+	while (actual != nullptr && actual->getGrupo()->getNumGrupo() == numG)
+		s << actual->mostrarGrupo() << endl;
+	return s.str();
+}
