@@ -1,4 +1,4 @@
-#pragma once
+=#pragma once
 #include "NodoGrupo.h"
 
 class ListaGrupo {
@@ -12,9 +12,8 @@ class ListaGrupo {
 		bool existeGrupo(int);
 		string mostrarGrupos();
 		string mostrarGruposEspecifico(string);
+		string mostrarGrupoEspecifico(int);
 		Grupo* obtenerGrupo(int);
 		bool getGrupoNombre(string);
 		//...
 	};
-
-
