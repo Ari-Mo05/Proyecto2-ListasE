@@ -141,14 +141,12 @@ ListaPer* Interfaz::ingresaPeriodo(ListaPer* listaP){
 	return listaP;
 }
 
-ListaCurso* Interfaz::ingresaCurso(ListaCurso* listaC){
+ListaCurso* Interfaz::ingresaCurso(ListaCurso* listaC, ListaPer* listaP){
 	string nombreCurso, idCurso, estado, mesInicio, mesCierre;
 	double precioCurso;
 	int num;
 	Periodo* peri = NULL;
 	Curso* cur = NULL;
-	ListaPer* listaP = new ListaPer();
-
 
 	cout << "Ingresar el nombre del curso" << endl;
 	cin.ignore();
@@ -162,34 +160,32 @@ ListaCurso* Interfaz::ingresaCurso(ListaCurso* listaC){
 	cout << "Estado del curso: Disponible o noDisponible" << endl;
 	cin >> estado;
 
+	cout << "Periodos disponibles: " << endl;
+	cout << listaP->mostrarPeriodos();
 
-	cout << "Ingresa el periodo:" << endl;
-	cout << "Periodo 1: De Enero a Marzo" << endl;
-	cout << "Periodo 2: De Abril a Junio" << endl;
-	cout << "Periodo 3: De Julio a Septiembre" << endl;
-	cout << "Periodo 4: De Octubre a Diciembre" << endl;
+	cout << "Ingresa el numero del periodo:" << endl;
 	cin >> num;
 	switch (num) {
-	case 1: {
-		mesInicio = "Enero";
-		mesCierre = "Marzo";
-	}
-		  break;
-	case 2: {
-		mesInicio = "Abril";
-		mesCierre = "Junio";
-	}
-		  break;
-	case 3: {
-		mesInicio = "Julio";
-		mesCierre = "Septiembre";
-	}
-		  break;
-	case 4: {
-		mesInicio = "Octubre";
-		mesCierre = "Diciembre";
-	}
-		  break;
+		case 1: {
+			mesInicio = "Enero";
+			mesCierre = "Marzo";
+		}
+		break;
+		case 2: {
+			mesInicio = "Abril";
+			mesCierre = "Junio";
+		}
+		break;
+		case 3: {
+			mesInicio = "Julio";
+			mesCierre = "Septiembre";
+		}
+		break;
+		case 4: {
+			mesInicio = "Octubre";
+			mesCierre = "Diciembre";
+		}
+		break;
 	}
 	cout << endl;
 	peri = new Periodo(mesInicio, mesCierre);
@@ -199,7 +195,7 @@ ListaCurso* Interfaz::ingresaCurso(ListaCurso* listaC){
 		if (listaC->agregarCurso(*cur)) {
 			cout << "El curso: " << endl;
 			cout << "--------------------------------------" << endl;
-			cout << cur->toString() << endl;
+			cout << cur->toString();
 			cout << "--------------------------------------" << endl;
 			cout << "Fue ingresado" << endl;
 			Sleep(4000);
@@ -216,7 +212,6 @@ ListaCurso* Interfaz::ingresaCurso(ListaCurso* listaC){
 	return listaC;
 }
 
-//terminar
 ListaGrupo* Interfaz::ingresaGrupo(ListaCurso* listaCur, ListaProfesores* listaProf, ListaGrupo* listaG){
 	int numGrupo, capacidadAlumnos, horaInicio, horaFinal, num;
 	string codCurso, diaSemana, id;
@@ -232,8 +227,8 @@ ListaGrupo* Interfaz::ingresaGrupo(ListaCurso* listaCur, ListaProfesores* listaP
 	cin >> capacidadAlumnos;
 	cout << endl;
 
-	cout << "Los cursos que se ofrecen son: ";
-	cout << listaCur->mostrarCursos() << endl;
+	cout << "Los cursos que se ofrecen son: " << endl;
+	cout << listaCur->mostrarCursos();
 	cout << "Ingrese el codigo del curso que desea para el grupo" << endl;
 	cin >> codCurso;
 	curso = listaCur->obtenerCurso(codCurso);
@@ -257,8 +252,8 @@ ListaGrupo* Interfaz::ingresaGrupo(ListaCurso* listaCur, ListaProfesores* listaP
 	cout << endl;
 
 
-	cout << "Los profesores disponibles son: ";
-	cout << listaProf->mostrarProfesores() << endl;
+	cout << "Los profesores disponibles son: " << endl;
+	cout << listaProf->mostrarProfesores();
 	cout << "Ingrese la cedula del profesor" << endl;
 	cin >> id;
 	cout << endl;
@@ -272,11 +267,11 @@ ListaGrupo* Interfaz::ingresaGrupo(ListaCurso* listaCur, ListaProfesores* listaP
 		cout << grupo->toString() << endl;
 		cout << "--------------------------------------" << endl;
 		cout << "Fue ingresado" << endl;
-		Sleep(4000);
+		Sleep(15000);
 	}
 	else {
 		cout << "El grupo no fue ingresado" << endl;
-		Sleep(10000);
+		Sleep(15000);
 	}
 	return listaG;
 }
@@ -378,8 +373,7 @@ void Interfaz::estudiantesRegistrados(ListaEst* listaE) {
 	cout << listaE->mostrarEstudiantes();
 }
 
-void Interfaz::cursosMatriculadosPorEstudiante(ListaCurso* listaC){ //cursos totales prueba
-	cout << listaC->mostrarCursos();
+void Interfaz::cursosMatriculadosPorEstudiante(ListaCurso* listaC){ 
 }
 
 void Interfaz::profesorEspecifico(ListaProfesores* listaP){ 
