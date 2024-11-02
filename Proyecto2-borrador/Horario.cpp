@@ -42,7 +42,7 @@ string Horario::toString() const{
     h << "--------HORARIO--------" << endl;
     h << "Hora de inicio: " << horaInicio << endl;
     h << "Hora de finalizacion: " << horaFinal << endl;
-    h << "Dias de la semana: ";
+    h << "Dias de la semana: " << endl;
     for(int i = 0; i < can; i++)
       h << vec[i] << endl;
     return h.str();
