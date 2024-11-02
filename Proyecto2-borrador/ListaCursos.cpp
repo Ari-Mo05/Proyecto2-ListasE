@@ -14,8 +14,7 @@ bool ListaCurso::agregarCurso(Curso& cur) {
 		if (ppio == NULL)
 			ppio = new NodoCurso(cur, ppio);
 		else {
-			if (ppio->getSiguiente() == NULL)
-				actual = ppio;
+			actual = ppio;
 			while (actual->getSiguiente() != NULL)
 				actual = actual->getSiguiente();
 			actual->setSiguiente(new NodoCurso(cur, NULL));
@@ -65,4 +64,5 @@ Curso* ListaCurso::obtenerCurso(string idC){
 	}
 	return nullptr;
 }
+
 
