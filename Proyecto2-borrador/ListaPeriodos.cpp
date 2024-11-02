@@ -9,15 +9,12 @@ ListaPer::~ListaPer(){
 		delete actual;
 }
 
-//revisar
 bool ListaPer::agregarPeriodo(Periodo& peri) {
 	if (periodoPermitido(peri) && !existePeriodo(peri)) {
 		if (ppio == NULL) 
 			ppio = new NodoPeri(peri, actual);
 		else {
-			if (ppio->getSig() == NULL) {
-				actual = ppio;
-			}
+			actual = ppio;
 			while (actual->getSig() != NULL)
 				actual = actual->getSig();
 			actual->setSig(new NodoPeri(peri, NULL));
@@ -53,8 +50,7 @@ bool ListaPer::existePeriodo(Periodo& per) {
 	while (actual != NULL) {
 		if (actual->getPeriodo()->getMesInicio() == per.getMesInicio() && actual->getPeriodo()->getMesCierre() == per.getMesCierre())
 			return true;
-		else
-			actual = actual->getSig();
+		actual = actual->getSig();
 	}
 	return false;
 }
