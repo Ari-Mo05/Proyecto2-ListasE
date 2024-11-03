@@ -144,7 +144,7 @@ ListaPer* Interfaz::ingresaPeriodo(ListaPer* listaP){
 ListaCurso* Interfaz::ingresaCurso(ListaCurso* listaC, ListaPer* listaP){
 	string nombreCurso, idCurso, estado, mesInicio, mesCierre;
 	double precioCurso;
-	int num;
+	int num, estadoN;
 	Periodo* peri = NULL;
 	Curso* cur = NULL;
 
@@ -324,38 +324,52 @@ int Interfaz::subMenuMatricula() {
 	return op;
 }
 
-ListaMatri* Interfaz::matricularEstudiante(ListaEst* listaE, ListaGrupo* listaG) {
+ListaMatri* Interfaz::matricularEstudiante(ListaEst* listaE, ListaGrupo* listaG, ListaMatri* ListaM, ListaCurso* listaC) {
 	string ced, curso;
 	int num;
 	Estudiante* estu = new Estudiante();
 	Grupo* grup = new Grupo();
 	Matricula* matri = NULL;
-	ListaMatri* listaM = new ListaMatri();
 	cout << "Digite la cedula del estudiante" << endl;
 	cin >> ced;
 	if (listaE->siExisteEstudiante(ced)) {
 		estu = listaE->obtenerEstudiante(ced);
+		cout << "Cursos disponibles: " << endl;
+		cout << listaC->mostrarCursos();
 		cout << "Que curso desea matricular?" << endl;
-		cin >> curso;
-		if (listaG->getGrupoNombre(curso)) {
+		cin.ignore();
+		getline(cin, curso);
+		if (listaG->existeGrupo(curso)) {
 			cout << "Los grupos con ese curso son los siguientes: " << endl;
 			cout << listaG->mostrarGruposEspecifico(curso) << endl;
 			cout << "Ingrese el numero de grupo en el que desea matricular" << endl;
 			cin >> num;
 			grup = listaG->obtenerGrupo(num);
 			matri = new Matricula(grup, estu);
-			if (listaM->agregarMatricula(*matri))
+			cout << "Matricula a ingresar: " << endl;
+			cout << "El estudiante de cedula " << ced << " matriculo en el siguiente grupo" << endl;
+			cout << matri->toString();
+			matri->getGrupo()->setCantAlumnos(matri->getGrupo()->getCantAlumnos() + 1);
+			if (ListaM->agregarMatricula(*matri)) {
 				cout << "Matricula generada" << endl;
-			else
+				Sleep(4000);
+			}
+			else {
 				cout << "No se pudo ingresar la matricula" << endl;
+				matri->getGrupo()->setCantAlumnos(matri->getGrupo()->getCantAlumnos() - 1);
+				Sleep(4000);
+			}
 		}
-		cout << "Ese curso no existe" << endl;
+		else {
+			cout << "Ese curso no existe" << endl;
+			Sleep(4000);
+		}
 	}
 	cout << "Ese estudiante no esta ingresado" << endl;
-	return listaM;
+	return ListaM;
 }
 
-//terminar
+//terminar, eliminar nodo
 bool Interfaz::desmatricularEstudiante(ListaEst* listaE) {
 	string ced, curso;
 	cout << "Digite la cedula del estudiante que se desea desmatricular" << endl;
@@ -393,6 +407,7 @@ void Interfaz::estudiantesRegistrados(ListaEst* listaE) {
 }
 
 void Interfaz::cursosMatriculadosPorEstudiante(ListaCurso* listaC){ 
+
 }
 
 void Interfaz::profesorEspecifico(ListaProfesores* listaP){ 
@@ -406,7 +421,8 @@ void Interfaz::periodosHabilitadosParaElAnnio(ListaPer* listaP){
 	cout << listaP->mostrarPeriodos();
 }
 
-void Interfaz::informeGrupoEspecifico(){  }
+void Interfaz::informeGrupoEspecifico(){
+}
 
 
 //---------------GUARDAR-LOS-DATOS-EN-ARCHIVOS-------------
