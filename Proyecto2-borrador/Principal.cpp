@@ -39,44 +39,44 @@ int main() {
 		case 2: {
 			op = Interfaz::subMenuMatricula();
 			switch (op) {
-			case 1: {
-				listaM = Interfaz::matricularEstudiante(listaE, listaG, listaM, listaC);
-			}break;
-			case 2: {
-
-			}break;
-			}
+				case 1: {
+					listaM = Interfaz::matricularEstudiante(listaE, listaG, listaM, listaC);
+				}break;
+				case 2: {
+					Interfaz::desmatricularEstudiante(listaE);
+				}break;
+				}
 		}break;
 		case 3: {
 			op = Interfaz::subMenuBusquedaseInformes();
 			switch (op) {
-			case 1: {
-				Interfaz::profesoresRegistrados(listaP);
-			}break;
-			case 2: {
-				Interfaz::estudiantesRegistrados(listaE);
-			}break;
-			case 3: {
-				Interfaz::cursosMatriculadosPorEstudiante(listaC);
-			}break;
-			case 4: {
-				Interfaz::profesorEspecifico(listaP);
-			} break;
-			case 5: {
-				Interfaz::periodosHabilitadosParaElAnnio(listaPer);
-			}break;
-			case 6: {}break;
+				case 1: {
+					Interfaz::profesoresRegistrados(listaP);
+				}break;
+				case 2: {
+					Interfaz::estudiantesRegistrados(listaE);
+				}break;
+				case 3: {
+					Interfaz::cursosMatriculadosPorEstudiante(listaC);
+				}break;
+				case 4: {
+					Interfaz::profesorEspecifico(listaP);
+				} break;
+				case 5: {
+					Interfaz::periodosHabilitadosParaElAnnio(listaPer);
+				}break;
+				case 6: {
+				}break;
 			}
 			Sleep(4000);
 		}break;
 		case 4: {
 
-		} break;
+		}break;
 		}
 	} while (num != 5);
-
-
 
 	system("pause");
 	return 0;
 }
+
