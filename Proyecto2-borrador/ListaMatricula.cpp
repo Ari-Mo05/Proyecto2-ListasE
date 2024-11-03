@@ -9,14 +9,6 @@ ListaMatri::~ListaMatri(){
 		delete actual;
 }
 
-string ListaMatri::mostrarMatricula(){
-	stringstream m;
-	actual = ppio;
-	while (actual != nullptr)
-		m << actual->mostrarMatricula() << endl;
-	return m.str();
-}
-
 bool ListaMatri::agregarMatricula(Matricula& matri) {
 	if (!existePersonaGrupo(matri.getEstudiante()->getId(), matri.getGrupo()) && matri.getGrupo()->getCurso()->getEstado() == "Disponible" && matri.getGrupo()->getCantAlumnos() < matri.getGrupo()->getCapacidadAlumnos()) {
 		if (ppio == NULL)
@@ -139,6 +131,46 @@ string ListaMatri::toString() {
 		if(actual->getMatricula() != NULL)
 			s << actual->getMatricula()->toString();
 		actual = actual->getSiguiente();
+	}
+	return s.str();
+}
+
+bool ListaMatri::desmatricula(string ced, Grupo* grup) {
+	actual = ppio;
+	NodoMat* ptrB = NULL;
+	bool encontrado = false;
+	while (actual != NULL && !encontrado) {
+		if (ppio->getMatricula()->getEstudiante()->getId() == ced && ppio->getMatricula()->getGrupo() == grup) {
+			ppio = actual->getSiguiente();
+			encontrado = true;
+			return encontrado;
+		}
+		else {
+			while (actual->getSiguiente() != NULL && actual->getSiguiente()->getMatricula()->getEstudiante()->getId() == ced && actual->getMatricula()->getGrupo() == grup) {
+				ptrB = actual->getSiguiente();
+				actual->setSiguiente(ptrB->getSiguiente());
+				delete ptrB;
+				encontrado = true;
+				return encontrado;
+			}
+			if (actual->getSiguiente() != NULL) {
+				actual = actual->getSiguiente();
+			}
+			else
+				return false;
+		}
+	}
+	return false;
+
+}
+
+string ListaMatri::matriculasEspecificas(string ced) {
+	stringstream s;
+	actual = ppio;
+	while (actual != NULL) {
+		if (actual->getMatricula() != NULL && actual->getMatricula()->getEstudiante()->getId() == ced) {
+			s << actual->getMatricula()->getGrupo()->toString();
+		}
 	}
 	return s.str();
 }
