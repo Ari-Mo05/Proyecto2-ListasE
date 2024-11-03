@@ -16,4 +16,5 @@ class ListaMatri {
 		int cantidadCursosAnual(string);
 		double descuento(string);
 		string factura(string);
+		string toString();
 };
