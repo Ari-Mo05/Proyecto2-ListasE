@@ -8,7 +8,6 @@ class ListaMatri {
 	public:
 		ListaMatri();
 		virtual ~ListaMatri();
-		string mostrarMatricula();
 		bool agregarMatricula(Matricula&);
 		bool existePersonaGrupo(string, Grupo*);
 		double calcularSubtotal(string);
@@ -17,4 +16,7 @@ class ListaMatri {
 		double descuento(string);
 		string factura(string);
 		string toString();
+		bool desmatricula(string, Grupo*);
+		string matriculasEspecificas(string);
 };
+
