@@ -82,3 +82,4 @@ void Curso::setPeriodo(Periodo* per)
     peri = per;
 }
 
+
