@@ -18,10 +18,9 @@ string ListaMatri::mostrarMatricula(){
 }
 
 bool ListaMatri::agregarMatricula(Matricula& matri) {
-	if (!existePersonaGrupo(matri.getEstudiante()->getId(), matri.getGrupo()) && matri.getGrupo()->getCurso()->getEstado() == "Disponible") {
-		if (ppio == NULL) {
+	if (!existePersonaGrupo(matri.getEstudiante()->getId(), matri.getGrupo()) && matri.getGrupo()->getCurso()->getEstado() == "Disponible" && matri.getGrupo()->getCantAlumnos() < matri.getGrupo()->getCapacidadAlumnos()) {
+		if (ppio == NULL)
 			ppio = new NodoMat(matri, ppio);
-		}
 		else {
 			if (ppio->getSiguiente() == NULL)
 				actual = ppio;
@@ -130,5 +129,16 @@ string ListaMatri::factura(string ced) {
 			s << "No recibe descuento" << endl;
 	s << "Descuento: " << descuento(ced) << endl;
 	s << "Total: " << calcularSubtotal(ced) + calcularSubtotal(ced) * 0.13 - descuento(ced);
+	return s.str();
+}
+
+string ListaMatri::toString() {
+	stringstream s;
+	actual = ppio;
+	while (actual != NULL) {
+		if(actual->getMatricula() != NULL)
+			s << actual->getMatricula()->toString();
+		actual = actual->getSiguiente();
+	}
 	return s.str();
 }
