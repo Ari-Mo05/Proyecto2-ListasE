@@ -187,7 +187,7 @@ ListaCurso* Interfaz::ingresaCurso(ListaCurso* listaC, ListaPer* listaP){
 		}
 		break;
 	}
-	cout << endl;
+	cout << "-----------------------------" << endl;
 	peri = new Periodo(mesInicio, mesCierre);
 	if (listaP->existePeriodo(*peri)) {
 		cout << "El periodo es valido" << endl;
@@ -264,10 +264,10 @@ ListaGrupo* Interfaz::ingresaGrupo(ListaCurso* listaCur, ListaProfesores* listaP
 	if (listaG->ingresarGrupos(*grupo)) {
 		cout << "El grupo: " << endl;
 		cout << "--------------------------------------" << endl;
-		cout << grupo->toString() << endl;
+		cout << grupo->toString();
 		cout << "--------------------------------------" << endl;
 		cout << "Fue ingresado" << endl;
-		Sleep(15000);
+		Sleep(10000);
 	}
 	else {
 		cout << "El grupo no fue ingresado" << endl;
@@ -280,7 +280,10 @@ bool Interfaz::asignarProfesor(ListaProfesores* listaP, ListaGrupo* listaG){
 	int numG;
 	string id;
 	Profesor* prof = new Profesor();
+	cout << "Lista de grupos disponibles: " << endl;
+	cout << "------------------------------------------------" << endl;
 	cout << listaG->mostrarGrupos();
+	cout << "------------------------------------------------" << endl;
 	cout << "Ingrese el numero del grupo" << endl;
 	cin >> numG;
 	if (listaG->existeGrupo(numG)) {
@@ -290,9 +293,16 @@ bool Interfaz::asignarProfesor(ListaProfesores* listaP, ListaGrupo* listaG){
 		cin >> id;
 		if (listaP->existeProfesor(id)) {
 			prof = listaP->obtenerProfesor(id);
+			cout << prof->toString();
 			listaG->obtenerGrupo(numG)->setProfesor(prof);
+			cout << "Informacion actualizada" << endl;
 			cout << listaG->mostrarGrupoEspecifico(numG);
+			Sleep(10000);
 			return true;
+		}
+		else {
+			cout << "No se pudo hacer el cambio porque ese profesor no esta ingresado" << endl;
+			Sleep(4000);
 		}
 	}
 	return false;
@@ -410,3 +420,4 @@ int Interfaz::guardarDatosArchivos() {
 	cin >> op;
 	return op;
 }
+
