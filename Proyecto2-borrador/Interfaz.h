@@ -26,7 +26,7 @@ class Interfaz {
 		static bool asignarProfesor(ListaProfesores*, ListaGrupo*);
 		static int subMenuMatricula();
 		static ListaMatri* matricularEstudiante(ListaEst*, ListaGrupo*, ListaMatri*, ListaCurso*);
-		static bool desmatricularEstudiante(ListaEst*);
+		static bool desmatricularEstudiante(ListaEst*, ListaMatri*, ListaGrupo*);
 		static int subMenuBusquedaseInformes();
 		static void profesoresRegistrados(ListaProfesores*);
 		static void estudiantesRegistrados(ListaEst*);
