@@ -40,7 +40,7 @@ int main() {
 			op = Interfaz::subMenuMatricula();
 			switch (op) {
 			case 1: {
-				listaM = Interfaz::matricularEstudiante(listaE, listaG);
+				listaM = Interfaz::matricularEstudiante(listaE, listaG, listaM, listaC);
 			}break;
 			case 2: {
 
@@ -80,5 +80,3 @@ int main() {
 	system("pause");
 	return 0;
 }
-
-
