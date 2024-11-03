@@ -26,8 +26,7 @@ Grupo::~Grupo()
 
 string Grupo::toString(){
     stringstream g;
-    g << "------INFORMACION DEL GRUPO------" << endl;
-    g << "---------------------------------" << endl;
+    g << "-----------INFORMACION DEL GRUPO---------" << endl;
     g << "Numero de Grupo: " << numGrupo << endl;
     g << "Capacidad de Alumnos: " << capacidadAlumnos << endl;
     g << "Cantidad de Alumnos: " << cantAlumnos << endl;
@@ -37,6 +36,7 @@ string Grupo::toString(){
     g << hor->toString() << endl;
     g << "Profesor: " << endl;
     g << profe->toString() << endl;
+    g << "-----------------------------------------" << endl;
     return g.str();
 }
 
@@ -99,3 +99,4 @@ void Grupo::setProfesor(Profesor* prof)
 {
     profe = prof;
 }
+
