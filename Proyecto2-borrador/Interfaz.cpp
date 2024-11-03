@@ -92,6 +92,7 @@ ListaEst* Interfaz::ingresaEstudiante(ListaEst* listaE) {
 	}
 	return listaE;
 }
+
 ListaPer* Interfaz::ingresaPeriodo(ListaPer* listaP){
 	int num;
 	string mesInicio, mesCierre;
@@ -370,13 +371,34 @@ ListaMatri* Interfaz::matricularEstudiante(ListaEst* listaE, ListaGrupo* listaG,
 }
 
 //terminar, eliminar nodo
-bool Interfaz::desmatricularEstudiante(ListaEst* listaE) {
-	string ced, curso;
+bool Interfaz::desmatricularEstudiante(ListaEst* listaE, ListaMatri* listaM, ListaGrupo* listaG) {
+	string ced;
+	int numG;
+	Grupo* grupDesmatriculado = new Grupo();
 	cout << "Digite la cedula del estudiante que se desea desmatricular" << endl;
 	cin >> ced;
 	if (listaE->siExisteEstudiante(ced)) {
-		cout << "Digite el curso que desea desmatricular" << endl;
-		cin >> curso;
+		cout << "Los grupos en los cuales el estudiande de cedula " << ced << " esta matriculado son: " << endl;
+		cout << listaM->matriculasEspecificas(ced);
+		cout << "Digite el numero de grupo, del cual desea desmatricular" << endl;
+		cin >> numG;
+		cout << "EL numero del cual se va a desmatricular es el siguiente: " << endl;
+		cout << listaG->obtenerGrupo(numG)->toString() << endl;
+		grupDesmatriculado = listaG->obtenerGrupo(numG);
+		if (listaM->desmatricula(ced, grupDesmatriculado)) {
+			cout << "Si se realizo el cambio" << endl;
+			cout << listaM->matriculasEspecificas(ced);
+			Sleep(5000);
+		}
+		else {
+			cout << "No se realizo el cambio" << endl;
+			Sleep(5000);
+		}
+		
+	}
+	else {
+		cout << "No existe ese estudiante" << endl;
+		Sleep(2000);
 	}
 	return true;
 }
@@ -440,4 +462,3 @@ int Interfaz::guardarDatosArchivos() {
 	cin >> op;
 	return op;
 }
-
