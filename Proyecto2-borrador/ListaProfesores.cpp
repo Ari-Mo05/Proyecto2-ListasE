@@ -38,9 +38,11 @@ string ListaProfesores::mostrarProfesoresSinEspecifico(string ced) {
 	stringstream s;
 	pExt = ppio;
 	while (pExt != NULL) {
-		if (pExt->getProfe()->getId() != ced)
-			s << mostrarProfesores() << endl;
-		pExt = pExt->getSiguiente();
+		if (pExt->getProfe() != NULL) {
+			if (pExt->getProfe()->getId() != ced)
+				s << pExt->getProfe()->toString() << endl;
+			pExt = pExt->getSiguiente();
+		}
 	}
 	return s.str();
 }
@@ -48,9 +50,11 @@ string ListaProfesores::mostrarProfesoresSinEspecifico(string ced) {
 Profesor* ListaProfesores::obtenerProfesor(string ced) {
 	pExt = ppio;
 	while (pExt != NULL) {
-		if (pExt->getProfe()->getId() == ced)
-			return pExt->getProfe();
-		pExt = pExt->getSiguiente();
+		if (pExt->getProfe() != NULL) {
+			if (pExt->getProfe()->getId() == ced)
+				return pExt->getProfe();
+			pExt = pExt->getSiguiente();
+		}
 	}
 	return NULL;
 }
@@ -74,3 +78,4 @@ string ListaProfesores::toString() {
 	}
 	return s.str();
 }
+
