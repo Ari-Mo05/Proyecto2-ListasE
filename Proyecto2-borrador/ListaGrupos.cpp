@@ -46,7 +46,7 @@ Grupo* ListaGrupo::obtenerGrupo(int numG){
 }
 
 
-bool ListaGrupo::getGrupoNombre(string nomC) {
+bool ListaGrupo::existeGrupo(string nomC) {
 	actual = ppio;
 	while (actual != NULL) {
 		if (actual->getGrupo()->getCurso()->getNombreCurso() == nomC)
@@ -66,11 +66,16 @@ bool ListaGrupo::existeGrupo(int cod) {
 	return false;
 }
 
-string ListaGrupo::mostrarGruposEspecifico(string cur) {
+string ListaGrupo::mostrarGruposEspecifico(string nom) {
 	stringstream s;
 	actual = ppio;
-	while (actual != nullptr && actual->getGrupo()->getCurso()->getNombreCurso() == cur)
-		s << actual->mostrarGrupo() << endl;
+	while (actual != nullptr) {
+		if (actual->getGrupo() != NULL) {
+			if (actual->getGrupo()->getCurso()->getNombreCurso() == nom)
+				s << actual->getGrupo()->toString() << endl;
+			actual = actual->getSiguiente();
+		}
+	}
 	return s.str();
 }
 
