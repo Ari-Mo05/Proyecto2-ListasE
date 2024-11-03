@@ -157,8 +157,12 @@ ListaCurso* Interfaz::ingresaCurso(ListaCurso* listaC, ListaPer* listaP){
 	cin >> idCurso;
 	cout << "Ingrese el precio del curso" << endl;
 	cin >> precioCurso;
-	cout << "Estado del curso: Disponible o noDisponible" << endl;
-	cin >> estado;
+	cout << "Estado del curso: Disponible (1) o no Disponible (2). Ingrese el numero" << endl;
+	cin >> estadoN;
+	if (estadoN == 1)
+		estado = "Disponible";
+	if (estadoN == 2)
+		estado = "noDisponible";
 
 	cout << "Periodos disponibles: " << endl;
 	cout << listaP->mostrarPeriodos();
