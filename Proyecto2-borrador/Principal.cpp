@@ -15,24 +15,24 @@ int main() {
 		case 1: {
 			op = Interfaz::subMenuAdministracion();
 			switch (op) {
-			case 1: {
-				listaP = Interfaz::ingresaProfesor(listaP, listaE);
-			}break;
-			case 2: {
-				listaE = Interfaz::ingresaEstudiante(listaE);
-			} break;
-			case 3: {
-				listaPer = Interfaz::ingresaPeriodo(listaPer);
-			} break;
-			case 4: {
-				listaC = Interfaz::ingresaCurso(listaC, listaPer);
-			}break;
-			case 5: {
-				listaG = Interfaz::ingresaGrupo(listaC, listaP, listaG);
-			}break;
-			case 6: {
-				Interfaz::asignarProfesor(listaP, listaG);
-			}break;
+				case 1: {
+					listaP = Interfaz::ingresaProfesor(listaP, listaE);
+				}break;
+				case 2: {
+					listaE = Interfaz::ingresaEstudiante(listaE);
+				} break;
+				case 3: {
+					listaPer = Interfaz::ingresaPeriodo(listaPer);
+				} break;
+				case 4: {
+					listaC = Interfaz::ingresaCurso(listaC, listaPer);
+				}break;
+				case 5: {
+					listaG = Interfaz::ingresaGrupo(listaC, listaP, listaG);
+				}break;
+				case 6: {
+					Interfaz::asignarProfesor(listaP, listaG);
+				}break;
 			}
 		}
 			  break;
@@ -80,4 +80,5 @@ int main() {
 	system("pause");
 	return 0;
 }
+
 
